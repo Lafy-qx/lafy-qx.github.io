@@ -1,0 +1,11 @@
+* {
+    color: #C9CBE5 !important;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid #000; */
+}

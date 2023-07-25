@@ -1,0 +1,110 @@
+body {
+    height: max-content;
+    background-image: url(../IMG/BodyIMG.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Шапка */
+.header {
+    box-shadow: 0px 20px 40px 20px rgba(0, 0, 0, 0.352);
+    padding: 0 15% !important;
+    height: 80px;
+    background-image: url(../IMG/header.png) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.headercontainer {
+    padding: 0 !important;
+
+}
+
+#navbarNav {
+    justify-content: center;
+}
+
+.navbar-nav {
+    width: 80%;
+    justify-content: space-around !important;
+    font-size: 1.1rem !important;
+}
+
+.nav-link {
+    padding-top: 15px !important;
+}
+
+.navbar-brand {
+    margin-left: 1.5rem;
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    border-bottom: 1px solid #C9CBE5 !important;
+}
+
+.disable {
+    display: none !important;
+}
+
+/* Медиазапросы хедера для ноутбуков header*/
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Медиазапросы для планшета header*/
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Адаптивность под телефон header*/
+@media (max-width: 767px) {
+    .header {
+        padding: 0 !important;
+    }
+
+    .disable {
+        display: block !important;
+    }
+
+    .navbar-nav {
+        display: none !important;
+    }
+
+    .mobilenavbar {
+        display: block !important;
+    }
+}
+
+/* Body */
+#wrapper {
+    padding: 0 19%
+}
+
+#helloBlock {
+    margin-top: 80px;
+    height: 550px;
+    border-radius: 15px;
+    background: url(../IMG/Hello.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    mix-blend-mode: screen;
+}
+
+#news {
+    margin-top: 80px;
+    height: 950px;
+    border-radius: 15px;
+    background: url(../IMG/Hello.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    mix-blend-mode: screen;
+}
+
+/* Footer */
+footer {
+    background-image: url(../IMG/footer.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: 80px;
+    height: 180px;
+    box-shadow: 0px -20px 30px 10px rgba(0, 0, 0, 0.35);
+}
