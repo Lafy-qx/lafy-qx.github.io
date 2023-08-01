@@ -78,6 +78,7 @@ body {
 
 #helloBlock {
     margin-top: 80px;
+    width: 100%;
     height: 550px;
     border-radius: 15px;
     background: url(../IMG/Hello.png);
@@ -85,9 +86,46 @@ body {
     background-position: center;
     background-size: cover;
     mix-blend-mode: screen;
+    display: flex;
+    
+}
+#leftblock{
+    width: 60%;
+    padding: 10% 5%;
+
+}
+#leftblock p{
+    margin-top: 20px;
+    width: 90%;
+}
+#buttonBlock {
+    margin-top: 70px;
+
+}
+#buttonBlock a{
+    text-decoration: none;
+}
+#buttonBlock button{
+    border:2px solid rgba(48, 0, 88, 0.713);;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 150px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+}
+#buttonBlock button:hover{
+    background-color: rgba(48, 0, 88, 0.713);
+}
+#rightblock{
+    width: 40%;
+    background-image: url(../IMG/zodiac.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 85%;
 }
 
 #news {
+    padding: 4% 5%;
     margin-top: 80px;
     height: 950px;
     border-radius: 15px;
@@ -96,6 +134,74 @@ body {
     background-position: center;
     background-size: cover;
     mix-blend-mode: screen;
+}
+.read{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;margin-top: 10px;
+}
+.read h1{
+    margin: 10px;
+    
+}
+.line{
+    margin-top: 4px;
+    background-color: #C9CBE5;
+    width: 100%;
+    height: 2px;
+}
+.cardNewsBlock{
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+.cardNews{
+    width: 30%;
+}
+.imgCards{
+    background-image: url(../IMG/kartinki-schastlivoj-semi-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+}
+.textCard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    justify-content: start;
+}
+.nameCard{
+    font-size: 1.3rem ;
+}
+.surNameCard{
+    color: rgba(201, 203, 229, 0.593)!important;
+}
+.likeDate{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+    padding: 0;
+    margin: 0;
+}
+.cardNewsBlock button{
+    border-radius: 5px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 40PX;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border:2px solid rgba(48, 0, 88, 0.713);
+}
+.cardNewsBlock button a{
+    text-decoration: none;
 }
 
 /* Footer */
