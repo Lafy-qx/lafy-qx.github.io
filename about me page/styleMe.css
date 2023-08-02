@@ -1,0 +1,95 @@
+#skill p {
+    padding: 0%;
+    margin: 0%;
+    margin-bottom: 5px;
+}
+#skill{
+    margin-top: 30px;
+}
+#hellotext p {
+    padding: 0%;
+    font-size: 1rem;
+
+}
+
+#leftblock p{
+    color: rgba(201, 203, 229, 0.62)!important;
+}
+#leftblock{
+    width: 60%;
+    padding: 10% 3%;
+}
+#rightblockMe{
+    width: 40%;
+    background-image: url(./img/узбек-маг\ 1.png);
+    filter: brightness(50%);
+    filter: contrast(1.2);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 90%;
+}
+.cardNewsBlock{
+    margin-top: 50px;
+}
+#news{
+    height: 600px;
+}
+.cardNews button{
+    margin-top: 40px;
+}
+.nameCard{
+    margin-bottom: 10px ;
+}
+.imgCards{
+    height: 200px;
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    #rightblockMe{
+        background-size: 100%;
+    }
+    #helloBlock{
+        height: 500px;
+    }
+    #leftblock{
+        padding: 6% 3%;
+     }
+     #news{
+        padding: 2% 2%;
+     }
+}
+
+/* Медиазапросы для планшета body*/
+@media (min-width: 768px) and (max-width: 991px) {
+    #rightblockMe{
+        display: none;
+     }
+     #leftblock{
+        width: 100%;
+     }
+     #news{
+        padding: 2% 2%;
+     }
+     .cardNews{
+        width: 31%;
+        height: 400px;
+     }
+     .cardNews button{
+        margin-top: 45px;
+     }
+}
+
+/* Адаптивность под телефон body*/
+@media (max-width: 767px) {
+ #rightblockMe{
+    display: none;
+ }
+ #leftblock{
+    width: 100%;
+ }
+ .cardNews button{
+    margin-top: 65px;
+ }
+ #news{
+    padding: 5% 3%;
+ }
+}

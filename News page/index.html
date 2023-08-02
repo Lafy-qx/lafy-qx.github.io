@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обо мне</title>
+    <link rel="shortcut icon" href="../IMG/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="../STYLE/Allstyle.css"><!--Общие стили -->
     <link rel="stylesheet" href="../STYLE/main.css"><!--Cтили главной  -->
     <link rel="stylesheet" href="styleNews.css"><!--Стили новости
@@ -19,7 +21,7 @@
     <nav class="navbar navbar-expand header">
         <div class="container-fluid headercontainer">
             <img src="../IMG/starHeader.png" alt="">
-            <a class="navbar-brand" href="#">Zodiac Sign.</a>
+            <a class="navbar-brand" href="../index.html">Zodiac Sign.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,13 +38,16 @@
                         <a class="nav-link" href="./index.html">Блог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../aboutMe/index.html">Обо мне</a>
+                        <a class="nav-link" href="../about me page/index.html">Обо мне</a>
                     </li>
 
                 </ul>
                 <button class="btn disable" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                    <span class="navbar-toggler-icon"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 384 256" fill="none">
+                        <path d="M24 24H360M24 128H360M24 232H360" stroke="#C9CBE5" stroke-width="48"
+                            stroke-miterlimit="10" stroke-linecap="round" />
+                    </svg>
                 </button>
             </div>
         </div>
@@ -55,20 +60,30 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <ul class="navbar-nav mobilenavbar justify-content-end">
-                <li class="nav-item border-bottom">
+            <ul class="navbar-nav mobilenavbar">
+                <li class="nav-item border-top">
                     <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class="nav-link" href="../Prediction page/index.html">Предсказание</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class="nav-link" href="./index.html">Блог</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../aboutMe/index.html">Обо мне</a>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link" href="../about me page/index.html">Обо мне</a>
                 </li>
+            </ul>
+            <div id="contactBlock">
+                <div id="contact">
+                    <div class="blockContactSvg"></div>
+                    <div class="blockContactSvg"></div>
+                </div>
+                <div id="politics">
 
+                    <p>политика конфиденциальности</p>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -100,7 +115,7 @@
                                 </svg>
                             </p>
                             <p>date:121321</p>
-                            
+
                         </div>
                         <button><a href="#">читать</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
@@ -130,7 +145,7 @@
                                 </svg>
                             </p>
                             <p>date:121321</p>
-                            
+
                         </div>
                         <button><a href="#">читать</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
@@ -160,7 +175,7 @@
                                 </svg>
                             </p>
                             <p>date:121321</p>
-                            
+
                         </div>
                         <button><a href="#">читать</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
@@ -190,7 +205,67 @@
                                 </svg>
                             </p>
                             <p>date:121321</p>
-                            
+
+                        </div>
+                        <button><a href="#">читать</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
+                                fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
+                                    fill="#C9CBE6" />
+                            </svg></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardNewsBlock">
+                <div class="imgnews"></div>
+                <div class="blockTextNews">
+                    <div class="textCard">
+                        <p class="nameCard">Семейная жизнь</p>
+                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
+                    </div>
+                    <div class="blockNewsDate">
+                        <div class="likeDate">
+                            <p><span>0</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
+                                    fill="none">
+                                    <path
+                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
+                                        fill="#C9CBE6" />
+                                </svg>
+                            </p>
+                            <p>date:121321</p>
+
+                        </div>
+                        <button><a href="#">читать</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
+                                fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
+                                    fill="#C9CBE6" />
+                            </svg></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardNewsBlock">
+                <div class="imgnews"></div>
+                <div class="blockTextNews">
+                    <div class="textCard">
+                        <p class="nameCard">Семейная жизнь</p>
+                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
+                    </div>
+                    <div class="blockNewsDate">
+                        <div class="likeDate">
+                            <p><span>0</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
+                                    fill="none">
+                                    <path
+                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
+                                        fill="#C9CBE6" />
+                                </svg>
+                            </p>
+                            <p>date:121321</p>
+
                         </div>
                         <button><a href="#">читать</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"

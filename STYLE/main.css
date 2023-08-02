@@ -46,11 +46,92 @@ body {
     display: none !important;
 }
 
+.offcanvas {
+    width: 50% !important;
+}
+
+.offcanvas-header {
+    background-color: #3D3A5A !important;
+    height: 82px;
+}
+
+.offcanvas-body {
+    background-color: #484774 !important;
+}
+
+.mobilenavbar {
+    width: 100%;
+}
+
+.mobilenavbar .nav-item {
+    align-items: center !important;
+    margin-top: 20px !important;
+    text-align: center;
+}
+
+.nav-link {
+    display: block !important;
+    align-items: center !important;
+}
+
+#contactBlock {
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+}
+
+#contact {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.blockContactSvg {
+    width: 60%;
+    height: 40px;
+}
+
+#politics {
+    height: 20px;
+}
+
+#politics p {
+    text-align: center;
+    font-size: 0.7rem;
+}
+
 /* Медиазапросы хедера для ноутбуков header*/
-@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px) and (max-width: 1199px) {
+    #navbarNav {
+        justify-content: space-between;
+    }
+
+    .navbar-nav {
+        width: 100% !important;
+    }
+
+    .header {
+
+        padding: 0 10% !important;
+
+    }
+
+}
 
 /* Медиазапросы для планшета header*/
-@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-nav {
+        width: 100% !important;
+    }
+
+    .header {
+
+        padding: 0 6% !important;
+
+    }
+}
 
 /* Адаптивность под телефон header*/
 @media (max-width: 767px) {
@@ -69,6 +150,10 @@ body {
     .mobilenavbar {
         display: block !important;
     }
+
+    #navbarNav {
+        justify-content: flex-end;
+    }
 }
 
 /* Body */
@@ -79,7 +164,7 @@ body {
 #helloBlock {
     margin-top: 80px;
     width: 100%;
-    height: 550px;
+    height: max-content;
     border-radius: 15px;
     background: url(../IMG/Hello.png);
     background-repeat: no-repeat;
@@ -87,41 +172,49 @@ body {
     background-size: cover;
     mix-blend-mode: screen;
     display: flex;
-    
-}
-#leftblock{
-    width: 60%;
-    padding: 10% 5%;
 
 }
-#leftblock p{
+
+#leftblock {
+    width: 60%;
+    padding: 6% 5%;
+
+}
+
+#leftblock p {
     margin-top: 20px;
     width: 90%;
 }
+
 #buttonBlock {
-    margin-top: 70px;
+    margin-top: 60px;
 
 }
-#buttonBlock a{
+
+#buttonBlock a {
     text-decoration: none;
 }
-#buttonBlock button{
-    border:2px solid rgba(48, 0, 88, 0.713);;
+
+#buttonBlock button {
+    border: 2px solid rgba(48, 0, 88, 0.713);
+    ;
     border-radius: 5px;
     margin-right: 10px;
     width: 150px;
     height: 40px;
     background-color: rgba(255, 255, 255, 0);
 }
-#buttonBlock button:hover{
+
+#buttonBlock button:hover {
     background-color: rgba(48, 0, 88, 0.713);
 }
-#rightblock{
+
+#rightblock {
     width: 40%;
     background-image: url(../IMG/zodiac.png);
     background-position: right;
     background-repeat: no-repeat;
-    background-size: 85%;
+    background-size: 98%;
 }
 
 #news {
@@ -135,32 +228,45 @@ body {
     background-size: cover;
     mix-blend-mode: screen;
 }
-.read{
+
+.read {
+    border-radius: 5px;
     display: flex;
     height: 50px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
-.read h1{
+
+.read h1 {
     margin: 10px;
-    
+
 }
-.line{
+
+.line {
     margin-top: 4px;
     background-color: #C9CBE5;
     width: 100%;
     height: 2px;
 }
-.cardNewsBlock{
-    height: 350px;
+
+.cardNewsBlock {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: max-content;
     display: flex;
     justify-content: space-between;
 }
-.cardNews{
-    width: 30%;
+
+.cardNews {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    width: 31%;
 }
-.imgCards{
+
+.imgCards {
     background-image: url(../IMG/kartinki-schastlivoj-semi-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -168,39 +274,48 @@ body {
     height: 150px;
     border-radius: 5px;
 }
-.textCard{
+
+.textCard {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100px;
     justify-content: start;
 }
-.nameCard{
-    font-size: 1.3rem ;
+
+.nameCard {
+    height: max-content;
+    font-size: 1.3rem;
 }
-.surNameCard{
-    color: rgba(201, 203, 229, 0.593)!important;
+
+.surNameCard {
+    height: max-content;
+    font-size: 1rem;
+    color: rgba(201, 203, 229, 0.593) !important;
 }
-.likeDate{
+
+.likeDate {
     width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-between;
-    align-items:end;
+    align-items: end;
     padding: 0;
     margin: 0;
 }
-.cardNewsBlock button{
+
+.cardNewsBlock button {
     border-radius: 5px;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     height: 40PX;
     width: 100%;
     background-color: rgba(255, 255, 255, 0);
-    border:2px solid rgba(48, 0, 88, 0.713);
+    border: 2px solid rgba(48, 0, 88, 0.713);
 }
-.cardNewsBlock button a{
+
+.cardNewsBlock button a {
     text-decoration: none;
 }
 
@@ -213,4 +328,72 @@ footer {
     margin-top: 80px;
     height: 180px;
     box-shadow: 0px -20px 30px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Медиазапросы хедера для ноутбуков body*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    #wrapper {
+        padding: 0 12% !important;
+    }
+    #rightblock {
+        background-image: url(../IMG/zodiac.png);
+        background-size: 100%;
+    }
+    #buttonBlock{
+        display: flex;
+        justify-content: space-between!important;
+    }
+
+}
+
+/* Медиазапросы для планшета body*/
+@media (min-width: 768px) and (max-width: 991px) {
+    #wrapper {
+        padding: 0 8% !important;
+    }
+    #leftblock{
+        width: 100%;
+    }
+    #rightblock{
+        display: none;
+    }
+    
+}
+
+/* Адаптивность под телефон body*/
+@media (max-width: 767px) {
+    #wrapper {
+        padding: 0 2% !important;
+    }
+    #leftblock{
+        
+        width: 100%;
+    }
+    #rightblock{
+        display: none;
+    }
+    #buttonBlock {
+        margin-top: 30px;
+    }
+    #helloBlock{
+        margin-top:10px;
+        background-image: none;
+    }
+    #buttonBlock button{
+        border: 2px solid rgba(48, 0, 88, 0.824);
+    }
+    #news{
+        margin-top: 0px;
+        background-image: none;
+    }
+    .read{
+        background-image: url(../IMG/BodyIMG.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0 2%;
+    }
+    footer{
+        display: none;
+    }
 }

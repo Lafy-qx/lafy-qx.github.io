@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обо мне</title>
+    <link rel="shortcut icon" href="../IMG/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../STYLE/Allstyle.css"><!--Общие стили -->
     <link rel="stylesheet" href="../STYLE/main.css"><!--Cтили главной  -->
     <link rel="stylesheet" href="styleMe.css"><!--Стили меня-->
@@ -18,7 +19,7 @@
     <nav class="navbar navbar-expand header">
         <div class="container-fluid headercontainer">
             <img src="../IMG/starHeader.png" alt="">
-            <a class="navbar-brand" href="#">Zodiac Sign.</a>
+            <a class="navbar-brand" href="../index.html">Zodiac Sign.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,7 +33,7 @@
                         <a class="nav-link" href="../Prediction page/index.html">Предсказание</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../news feed/index.html">Блог</a>
+                        <a class="nav-link" href="../News page/index.html">Блог</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./index.html">Обо мне</a>
@@ -41,7 +42,10 @@
                 </ul>
                 <button class="btn disable" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                    <span class="navbar-toggler-icon"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 384 256" fill="none">
+                        <path d="M24 24H360M24 128H360M24 232H360" stroke="#C9CBE5" stroke-width="48"
+                            stroke-miterlimit="10" stroke-linecap="round" />
+                    </svg>
                 </button>
             </div>
         </div>
@@ -53,22 +57,31 @@
         <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav mobilenavbar justify-content-end">
-                <li class="nav-item border-bottom">
+        <div class="offcanvas-body border-top">
+            <ul class="navbar-nav mobilenavbar">
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../Prediction page/index.html">Предсказание</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../news feed/index.html">Блог</a>
+                    <a class="nav-link" href="../News page/index.html">Блог</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item border-bottom">
                     <a class="nav-link" href="./index.html">Обо мне</a>
                 </li>
+            </ul>
+            <div id="contactBlock">
+                <div id="contact">
+                    <div class="blockContactSvg"></div>
+                    <div class="blockContactSvg"></div>
+                </div>
+                <div id="politics">
 
-
+                    <p>политика конфиденциальности</p>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Конец мобильного меню -->
@@ -103,7 +116,7 @@
                 <div class="cardNews">
                     <div class="imgCards"></div>
                     <div class="textCard">
-                        <p class="nameCard">Расклад на ТАРО</p>
+                        <p class="nameCard">Расклад ТАРО</p>
                         <p class="surNameCard">Раскидаю на картах вашу судьбу
                             и возможное будущее</p>
                     </div>
@@ -119,7 +132,7 @@
                     <div class="imgCards"></div>
                     <div class="textCard">
                         <p class="nameCard">Наведу порчу</p>
-                        <p class="surNameCard">Проткну дверь соседа иголкой и 
+                        <p class="surNameCard">Проткну дверь соседа иголкой и
                             заселю черта</p>
                     </div>
 
@@ -135,7 +148,7 @@
                     <div class="textCard">
                         <p class="nameCard">Сниму порчу</p>
                         <p class="surNameCard">Если сосед подумал над своим
-                            поведением, достану иголку и 
+                            поведением, достану иголку и
                             выселю черта</p>
                     </div>
 

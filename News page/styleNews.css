@@ -1,0 +1,58 @@
+#news{
+    height: max-content;
+}
+.cardNewsBlock{
+    margin-top: 30px;
+    height: 280px;
+    justify-content:center;
+}
+.imgnews, .blockTextNews{
+    width: 50%;
+}
+.imgnews{
+    border-radius: 5px;
+    background-image: url(../IMG/kartinki-schastlivoj-semi-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.blockTextNews{
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.blockNewsDate{
+    margin-top: 80px;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .cardNewsBlock {
+        height: 250px;
+    }
+    .blockNewsDate{
+        margin-top: 46px
+    }
+
+}
+
+/* Медиазапросы для планшета body*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .cardNewsBlock {
+        height: 220px;
+    }
+    .blockNewsDate{
+        margin-top: 16px
+    }
+    
+}
+
+/* Адаптивность под телефон body*/
+@media (max-width: 767px) {
+    .cardNewsBlock {
+        height: 200px;
+    }
+    .blockNewsDate{
+        margin-top: -5px
+    }
+}
