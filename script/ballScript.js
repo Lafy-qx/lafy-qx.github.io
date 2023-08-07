@@ -8,7 +8,6 @@ let clear = document.getElementById("clear")
 let result = document.getElementById("result")
 let imgball = document.querySelector(".imgball")
 let textBall = document.getElementById("textBall")
-console.log(resultBall)
 
 search.addEventListener("click", readSearchBall)
 function readSearchBall() {
@@ -17,18 +16,21 @@ function readSearchBall() {
         const rnd = Math.floor(Math.random() * resultBall.length)
 
         if (result.innerHTML == "") {
-            
+            search.disabled = true
             timer = setTimeout(() => result.classList.add('resultAnimate'), 1800)
             timer = setTimeout(() => result.innerHTML = resultBall[rnd], 1800)
             timer = setTimeout(() => result.classList.remove('resultAnimate'), 3800);
+            timer = setTimeout(() => search.disabled = false, 3300);
         } 
 
         
         else {
+            search.disabled = true
             timer = setTimeout(() => result.classList.add('resultAnimate'), 1800)
             result.innerHTML = ""
             timer = setTimeout(() => result.innerHTML = resultBall[rnd], 1800)
             timer = setTimeout(() => result.classList.remove('resultAnimate'), 3800);
+            timer = setTimeout(() => search.disabled = false, 3300);
         }
         warning.innerHTML = ""
         imgball.classList.add('imgBallAnimation');

@@ -1,9 +1,8 @@
 body {
     height: max-content;
-    background-image: url(../IMG/BodyIMG.png);
+    background-image: url(../image/BodyIMG.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
 }
 
 /* Шапка */
@@ -11,7 +10,7 @@ body {
     box-shadow: 0px 20px 40px 20px rgba(0, 0, 0, 0.352);
     padding: 0 15% !important;
     height: 80px;
-    background-image: url(../IMG/header.png) !important;
+    background-image: url(../image/header.png) !important;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -166,7 +165,7 @@ body {
     width: 100%;
     height: max-content;
     border-radius: 15px;
-    background: url(../IMG/Hello.png);
+    background: url(../image/Hello.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -211,10 +210,12 @@ body {
 
 #rightblock {
     width: 40%;
-    background-image: url(../IMG/zodiac.png);
-    background-position: right;
+    background-image: url(../image/zodiac.png);
+    background-position-x: right;
+    background-position-y: center;
     background-repeat: no-repeat;
-    background-size: 98%;
+    /* background-size: 70%; */
+    
 }
 
 #news {
@@ -222,7 +223,7 @@ body {
     margin-top: 80px;
     height: 950px;
     border-radius: 15px;
-    background: url(../IMG/Hello.png);
+    background: url(../image/Hello.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -267,7 +268,7 @@ body {
 }
 
 .imgCards {
-    background-image: url(../IMG/kartinki-schastlivoj-semi-1.jpg);
+    background-image: url(../image/kartinki-schastlivoj-semi-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -282,24 +283,28 @@ body {
     height: 100px;
     justify-content: start;
 }
-
+.textCard p{
+    padding: 0;
+    margin: 0;
+}
 .nameCard {
     height: max-content;
     font-size: 1.3rem;
 }
 
 .surNameCard {
-    height: max-content;
+    margin-bottom: 0  !important;
+    height: 100px!important;
     font-size: 1rem;
     color: rgba(201, 203, 229, 0.593) !important;
 }
 
 .likeDate {
+    padding-top: 20px!important;
     width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-between;
-    align-items: end;
     padding: 0;
     margin: 0;
 }
@@ -321,7 +326,7 @@ body {
 
 /* Footer */
 footer {
-    background-image: url(../IMG/footer.png);
+    background-image: url(../image/footer.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -336,7 +341,7 @@ footer {
         padding: 0 12% !important;
     }
     #rightblock {
-        background-image: url(../IMG/zodiac.png);
+        background-image: url(../image/zodiac.png);
         background-size: 100%;
     }
     #buttonBlock{
@@ -357,6 +362,13 @@ footer {
     #rightblock{
         display: none;
     }
+    .nameCard{
+        font-size: 1rem;
+    }
+    .surNameCard{
+        font-size: 0.8rem;
+
+    }
     
 }
 
@@ -368,6 +380,13 @@ footer {
     #leftblock{
         
         width: 100%;
+    }
+    .nameCard{
+        font-size: 1rem;
+    }
+    .surNameCard{
+        font-size: 0.8rem;
+
     }
     #rightblock{
         display: none;
@@ -387,7 +406,7 @@ footer {
         background-image: none;
     }
     .read{
-        background-image: url(../IMG/BodyIMG.png);
+        background-image: url(../image/BodyIMG.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

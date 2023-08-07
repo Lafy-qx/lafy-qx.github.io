@@ -3,93 +3,119 @@
     margin: 0%;
     margin-bottom: 5px;
 }
-#skill{
+
+#skill {
     margin-top: 30px;
 }
+
 #hellotext p {
     padding: 0%;
     font-size: 1rem;
 
 }
 
-#leftblock p{
-    color: rgba(201, 203, 229, 0.62)!important;
+#leftblock p {
+    color: rgba(201, 203, 229, 0.62) !important;
 }
-#leftblock{
+
+#leftblock {
     width: 60%;
     padding: 10% 3%;
 }
-#rightblockMe{
+
+#rightblockMe {
     width: 40%;
-    background-image: url(./img/узбек-маг\ 1.png);
+    background-image: url(../image/узбек-маг\ 1.png);
     filter: brightness(50%);
     filter: contrast(1.2);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: 90%;
 }
-.cardNewsBlock{
+
+.cardNewsBlock {
     margin-top: 50px;
 }
-#news{
+
+#news {
     height: 600px;
 }
-.cardNews button{
+
+.cardNews button {
     margin-top: 40px;
 }
-.nameCard{
-    margin-bottom: 10px ;
+
+.nameCard {
+    margin-bottom: 10px;
 }
-.imgCards{
+
+.imgCards {
     height: 200px;
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
-    #rightblockMe{
+    #rightblockMe {
         background-size: 100%;
     }
-    #helloBlock{
+
+    #helloBlock {
         height: 500px;
     }
-    #leftblock{
+
+    #leftblock {
         padding: 6% 3%;
-     }
-     #news{
+    }
+
+    #news {
         padding: 2% 2%;
-     }
+    }
 }
 
 /* Медиазапросы для планшета body*/
 @media (min-width: 768px) and (max-width: 991px) {
-    #rightblockMe{
+    #rightblockMe {
         display: none;
-     }
-     #leftblock{
+    }
+
+    #leftblock {
         width: 100%;
-     }
-     #news{
+    }
+
+    #news {
         padding: 2% 2%;
-     }
-     .cardNews{
+    }
+
+    .cardNews {
         width: 31%;
         height: 400px;
-     }
-     .cardNews button{
-        margin-top: 45px;
-     }
+    }
+
+    .cardNews button {
+        margin-top: 55px;
+    }
 }
 
 /* Адаптивность под телефон body*/
 @media (max-width: 767px) {
- #rightblockMe{
-    display: none;
- }
- #leftblock{
-    width: 100%;
- }
- .cardNews button{
-    margin-top: 65px;
- }
- #news{
-    padding: 5% 3%;
- }
+    #rightblockMe {
+        display: none;
+    }
+
+    #leftblock {
+        width: 100%;
+    }
+
+    .cardNews button {
+        font-size: 0.6rem;
+        margin-top: 55px;
+    }
+
+    .cardNews button svg {
+        width: 15px;
+        height: 13px
+    }
+
+    #news {
+        padding: 5% 3%;
+    }
 }
