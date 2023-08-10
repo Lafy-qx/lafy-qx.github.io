@@ -206,6 +206,7 @@ body {
 
 #buttonBlock button:hover {
     background-color: rgba(48, 0, 88, 0.713);
+    box-shadow: 0px 0px 15px 6px rgba(139, 0, 255, 0.32);
 }
 
 #rightblock {
@@ -215,7 +216,7 @@ body {
     background-position-y: center;
     background-repeat: no-repeat;
     /* background-size: 70%; */
-    
+
 }
 
 #news {
@@ -283,24 +284,26 @@ body {
     height: 100px;
     justify-content: start;
 }
-.textCard p{
+
+.textCard p {
     padding: 0;
     margin: 0;
 }
+
 .nameCard {
     height: max-content;
     font-size: 1.3rem;
 }
 
 .surNameCard {
-    margin-bottom: 0  !important;
-    height: 100px!important;
+    margin-bottom: 0 !important;
+    height: 100px !important;
     font-size: 1rem;
     color: rgba(201, 203, 229, 0.593) !important;
 }
 
 .likeDate {
-    padding-top: 20px!important;
+    padding-top: 20px !important;
     width: 100%;
     height: 60px;
     display: flex;
@@ -320,12 +323,18 @@ body {
     border: 2px solid rgba(48, 0, 88, 0.713);
 }
 
+.cardNewsBlock button:hover {
+    box-shadow: 0px 0px 15px 6px rgba(139, 0, 255, 0.32);
+    background-color: rgba(48, 0, 88, 0.713);
+}
+
 .cardNewsBlock button a {
     text-decoration: none;
 }
 
 /* Footer */
 footer {
+    padding: 0 19%;
     background-image: url(../image/footer.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -335,18 +344,53 @@ footer {
     box-shadow: 0px -20px 30px 10px rgba(0, 0, 0, 0.35);
 }
 
+#social {
+    padding-top: 20px;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+#contSocial{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+}
+#contSocial svg:hover{
+    fill: rgba(153, 86, 208, 0.859) !important;
+}
+#politic {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+#confidentiality {
+    text-decoration: none;
+    margin-left: 10px;
+    color: rgba(153, 86, 208, 0.859) !important;
+}
+
+#confidentiality:hover {
+    color: rgba(134, 60, 195, 0.677) !important;
+}
+
 /* Медиазапросы хедера для ноутбуков body*/
 @media (min-width: 992px) and (max-width: 1199px) {
     #wrapper {
         padding: 0 12% !important;
     }
+
     #rightblock {
         background-image: url(../image/zodiac.png);
         background-size: 100%;
     }
-    #buttonBlock{
+
+    #buttonBlock {
         display: flex;
-        justify-content: space-between!important;
+        justify-content: space-between !important;
     }
 
 }
@@ -356,20 +400,24 @@ footer {
     #wrapper {
         padding: 0 8% !important;
     }
-    #leftblock{
+
+    #leftblock {
         width: 100%;
     }
-    #rightblock{
+
+    #rightblock {
         display: none;
     }
-    .nameCard{
+
+    .nameCard {
         font-size: 1rem;
     }
-    .surNameCard{
+
+    .surNameCard {
         font-size: 0.8rem;
 
     }
-    
+
 }
 
 /* Адаптивность под телефон body*/
@@ -377,42 +425,52 @@ footer {
     #wrapper {
         padding: 0 2% !important;
     }
-    #leftblock{
-        
+
+    #leftblock {
+
         width: 100%;
     }
-    .nameCard{
+
+    .nameCard {
         font-size: 1rem;
     }
-    .surNameCard{
+
+    .surNameCard {
         font-size: 0.8rem;
 
     }
-    #rightblock{
+
+    #rightblock {
         display: none;
     }
+
     #buttonBlock {
         margin-top: 30px;
     }
-    #helloBlock{
-        margin-top:10px;
+
+    #helloBlock {
+        margin-top: 10px;
         background-image: none;
     }
-    #buttonBlock button{
+
+    #buttonBlock button {
         border: 2px solid rgba(48, 0, 88, 0.824);
     }
-    #news{
+
+    #news {
         margin-top: 0px;
         background-image: none;
     }
-    .read{
+
+    .read {
         background-image: url(../image/BodyIMG.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         padding: 0 2%;
     }
-    footer{
+
+    footer {
         display: none;
     }
 }

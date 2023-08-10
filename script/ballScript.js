@@ -47,5 +47,6 @@ function readSearchBall() {
 clear.addEventListener("click", clearValue)
 function clearValue() {
     textBall.value = ""
+    result.innerHTML = ""
 }
 

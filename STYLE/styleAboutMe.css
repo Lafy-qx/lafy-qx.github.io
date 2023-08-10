@@ -52,6 +52,38 @@
 .imgCards {
     height: 200px;
 }
+/* Модальное окно */
+.modal{
+    --bs-modal-width: 400px!important;
+    --bs-modal-header-border-width: none!important;
+    --bs-modal-footer-border-width:none!important;
+}
+.modal-body input{
+    padding-left: 3px;
+    height: 40px;
+    border: 2px solid rgba(90, 0, 164, 0.217);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+}
+.modal-body input::placeholder{
+    color: #c9cbe5bc !important;
+}
+.modal-body label{
+margin-top: 10px;
+}
+.modal-content{
+background-color: #484774 !important;
+border: 0!important;
+}
+.modal-footer button{
+    margin-left: 10px;
+    border: 2px solid rgba(90, 0, 164, 0.217);
+}
+.modal-footer button:hover{
+    background-color: rgba(96, 16, 162, 0.713)!important;
+    box-shadow: 0px 0px 15px 6px rgba(139, 0, 255, 0.32);
+}
 
 @media (min-width: 992px) and (max-width: 1199px) {
     #rightblockMe {

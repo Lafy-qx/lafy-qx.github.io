@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обо мне</title>
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style/Allstyle.css"><!--Общие стили -->
     <link rel="stylesheet" href="../style/main.css"><!--Cтили главной  -->
     <link rel="stylesheet" href="../style/styleAboutMe.css"><!--Стили меня-->
@@ -57,9 +57,9 @@
         <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body border-top">
+        <div class="offcanvas-body ">
             <ul class="navbar-nav mobilenavbar">
-                <li class="nav-item">
+                <li class="nav-item border-top">
                     <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
                 </li>
                 <li class="nav-item">
@@ -86,6 +86,28 @@
     </div>
     <!-- Конец мобильного меню -->
     <!-- Конец header -->
+    <!--Модальное окно-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Форма для связи</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <form name="feedbackCity" action="" method="POST">
+                    <div class="modal-body">
+                        <label for=""><span>Номер телефона:</span><br><input type="text" name="" placeholder="+7(918)262-75-97" size="41"></label><br>
+                        <label for="city"><span>Email:</span><br><input type="text" name="" placeholder="email@mail.ru" size="41"></label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn " data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn ">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Начало контента -->
     <div id="wrapper">
         <div id="helloBlock">
@@ -121,7 +143,7 @@
                             и возможное будущее</p>
                     </div>
 
-                    <button><a href="#">узнать подробнее</a>
+                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">узнать подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
@@ -136,7 +158,7 @@
                             заселю черта</p>
                     </div>
 
-                    <button><a href="#">узнать подробнее</a>
+                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">узнать подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
@@ -152,7 +174,7 @@
                             выселю черта</p>
                     </div>
 
-                    <button><a href="#">узнать подробнее</a>
+                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">узнать подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
@@ -164,7 +186,7 @@
         </div>
     </div>
     <footer>
-        123
+
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
