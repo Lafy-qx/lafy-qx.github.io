@@ -25,7 +25,7 @@
 .blockNewsDate{
     margin-top: 80px;
 }
-
+/* Медиазапросы для ноутбук body*/
 @media (min-width: 992px) and (max-width: 1199px) {
     .cardNewsBlock {
         height: 250px;

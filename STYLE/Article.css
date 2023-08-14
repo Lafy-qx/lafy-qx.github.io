@@ -1,0 +1,181 @@
+#news {
+    height: max-content;
+}
+
+#сontentArticleBlock {
+    height: max-content;
+}
+
+#сontentArticleBlock h2,
+h4 {
+    color: rgba(153, 86, 208, 0.859) !important;
+    margin-top: 10px;
+}
+
+#сontentArticleBlock h4 {
+    color: rgba(153, 86, 208, 0.859) !important;
+    margin-top: 10px;
+}
+
+#imgArticle {
+    height: 450px;
+    border-radius: 10px;
+}
+
+#textContentArticle {
+    margin-top: 10px;
+}
+
+#twoTextBlockArticle {
+    margin-top: 10px;
+    display: flex;
+    height: max-content;
+}
+
+#leftTextArticle {
+    height: max-content;
+    width: 65%;
+}
+
+#rightImgArticle {
+    width: 35%;
+    background-image: url(../image/semya.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+    background-size: cover;
+    filter: brightness(80%);
+    border-radius: 10px;
+}
+
+#imgArticle {
+    background-image: url(../image/kartinki-schastlivoj-semi-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(80%);
+
+}
+
+#commentBlock {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+#UserBlock {
+    
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 110px;
+    height: 100px;
+    border: 2px solid rgb(48, 0, 88);
+    border-radius: 5px;
+}
+#commentPlace{
+    width: 100%;
+    
+}
+#commentPlace form {
+    margin-left: 5px;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+}
+
+#nick {
+    margin-left: 5px;
+    padding-left: 3px;
+    height: 30px;
+    border: 2px solid rgb(48, 0, 88);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+}
+
+#comment {
+    width: 100%;
+    padding-left: 3px;
+    height: 65px;
+    border: 2px solid rgb(48, 0, 88);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+}
+
+#placeAllComment {
+    height:  max-content;
+    margin-top: 10px;
+}
+
+.userCommentBlock {
+    padding: 5px;
+    height: max-content;
+    display: flex;
+    margin-bottom: 20px;
+}
+.userCommentBlock:hover{
+    background-color: rgba(255, 255, 255, 0.042)!important;
+    border-radius: 5px;
+
+}
+.userComment {
+    margin-left: 10px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.userInfo{
+    display: flex;
+}
+.commentDate{
+    margin-left: 10px;
+    color:#c9cbe577 !important;
+}
+.textComment{
+    margin-top: 10px;
+    color:#c9cbe5bb !important;
+}
+/* Медиазапросы для ноутбук body*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #imgArticle {
+        height: 400px;
+
+    }
+
+    #leftTextArticle {
+        width: 60%;
+    }
+
+    #rightImgArticle {
+        width: 40%;
+    }
+}
+
+/* Медиазапросы для планшета body*/
+@media (min-width: 768px) and (max-width: 991px) {
+    #imgArticle {
+        height: 350px;
+
+    }
+
+    #leftTextArticle {
+        width: 50%;
+    }
+
+    #rightImgArticle {
+        width: 50%;
+    }
+}
+
+/* Адаптивность под телефон body*/
+@media (max-width: 767px) {
+    #imgArticle {
+        height: 300px;
+    }
+
+    #rightImgArticle {
+        height: 300px;
+    }
+}
