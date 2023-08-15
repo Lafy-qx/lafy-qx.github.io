@@ -39,6 +39,8 @@
 
 #news {
     height: 600px;
+    height: max-content;
+    
 }
 
 .cardNews button {
@@ -121,10 +123,6 @@ border: 0!important;
         width: 31%;
         height: 400px;
     }
-
-    .cardNews button {
-        margin-top: 55px;
-    }
 }
 
 /* Адаптивность под телефон body*/
@@ -139,7 +137,6 @@ border: 0!important;
 
     .cardNews button {
         font-size: 0.6rem;
-        margin-top: 55px;
     }
 
     .cardNews button svg {

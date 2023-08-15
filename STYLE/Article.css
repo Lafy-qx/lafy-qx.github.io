@@ -83,7 +83,7 @@ h4 {
 }
 
 #nick {
-    margin-left: 5px;
+    width: 100%;
     padding-left: 3px;
     height: 30px;
     border: 2px solid rgb(48, 0, 88);
@@ -91,7 +91,9 @@ h4 {
     background-color: rgba(255, 255, 255, 0);
     outline: none;
 }
-
+label{
+    width: 100%;
+}
 #comment {
     width: 100%;
     padding-left: 3px;
@@ -177,5 +179,14 @@ h4 {
 
     #rightImgArticle {
         height: 300px;
+    }
+    .commentDate, .userName{
+        font-size: 0.8rem;
+    }
+    #leftTextArticle{
+        width: 100%;
+    }
+    #rightImgArticle{
+        display: none;
     }
 }
