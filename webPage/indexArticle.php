@@ -1,18 +1,32 @@
+<?
+error_reporting(E_ALL);
+ini_set("display_error", "on");
+
+$host = "localhost";
+$login = "root";
+$pass = "";
+$database = "coursework";
+$link = mysqli_connect($host, $login, $pass, $database);
+
+$allComments = "SELECT * FROM comments";
+$resltComment = mysqli_query($link, $allComments) or die(mysqli_error($link));
+for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
+    ;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блог</title>
+    <title>Статья</title>
     <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../STYLE/Allstyle.css"><!--Общие стили -->
     <link rel="stylesheet" href="../STYLE/main.css"><!--Cтили главной  -->
-    <link rel="stylesheet" href="../STYLE/styleNews.css"><!--Стили новости
-    -->
+    <link rel="stylesheet" href="../STYLE/Article.css"><!--Cтили главной  -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!--Бутстрап-->
 </head>
 
 <body>
@@ -34,7 +48,7 @@
                         <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexNews.html">Блог</a>
+                        <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
@@ -58,16 +72,16 @@
         <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body ">
             <ul class="navbar-nav mobilenavbar">
                 <li class="nav-item border-top">
                     <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="../webPage/indexNews.html">Блог</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                 </li>
                 <li class="nav-item border-bottom">
                     <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
@@ -103,213 +117,125 @@
                     <p>политика конфиденциальности</p>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- Конец мобильного меню -->
     <!-- Конец header -->
     <!-- Начало контента -->
+
     <div id="wrapper">
         <div id="news">
-            <div class="read">
-                <div class="line"></div>
-                <h1>Статьи</h1>
-                <div class="line"></div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.html">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
+            <div id="сontentArticleBlock">
+                <div id="imgArticle"></div>
+                <h2>Название</h2>
+                <div id="textContentArticle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur id amet
+                    quae sint. Cupiditate, obcaecati quasi maiores aperiam in eos tempora officiis dolor quisquam nisi
+                    voluptas nihil soluta eaque? Ullam. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Delectus eius mollitia rem assumenda corporis? At porro sapiente tempore hic ducimus, veniam
+                    doloremque laboriosam iure ut id fugiat voluptatum eaque rerum. Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Ab, laboriosam aspernatur totam labore deserunt sequi quo nam.
+                    Molestiae fuga officia, sapiente molestias, recusandae ut, culpa consequatur iste deserunt similique
+                    placeat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt maxime molestiae voluptate
+                    laborum illo quisquam, cumque vel, quos eveniet, tempora totam hic iure esse eaque blanditiis
+                    inventore earum? Debitis, reiciendis? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima sed ipsam, perferendis corporis tempora rem ea ducimus iure eum vitae vero cum omnis saepe
+                    quo culpa! Porro sunt laudantium dolorem? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Explicabo cupiditate ut error sapiente. Incidunt odio quisquam asperiores dolorum modi magnam
+                    pariatur. Ipsa ad neque recusandae quia iste assumenda aperiam dolore! Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Amet vitae labore id iusto doloremque, sequi corrupti delectus minima
+                    repudiandae dolore. In rerum error quisquam animi est voluptatem, vero placeat ipsum! Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Corrupti praesentium assumenda voluptas culpa? Itaque,
+                    voluptate. Inventore reprehenderit itaque, tempora ratione laborum ipsum numquam ullam placeat sit
+                    deleniti amet incidunt eveniet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+                    molestiae deserunt voluptatem totam ad dolorem voluptatibus? Architecto nihil dolorum dicta! Nemo,
+                    magni consequuntur. Nemo ullam tempore reiciendis, eos voluptas illum? Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Accusantium, provident quibusdam? Fugiat blanditiis autem corporis
+                    natus dolores magni deserunt assumenda optio provident eum, nihil ipsum totam eveniet ratione
+                    laboriosam doloribus!
                 </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
+                <h4>подзаголовок</h4>
+                <div id="twoTextBlockArticle">
+                    <div id="leftTextArticle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero assumenda
+                        molestiae debitis saepe nesciunt sunt nostrum, quo error facilis iure quis corrupti! Dolor quas
+                        dicta laboriosam nam dolore earum ipsam!
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maxime reprehenderit dolorum
+                        fuga amet, ea ad dolore, quasi hic dolor perferendis iste! Culpa corporis saepe aspernatur
+                        soluta rem amet omnis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptate
+                        sint et quod, odio maiores nisi repellendus cumque rerum, corporis, animi eius laboriosam
+                        eligendi dolore itaque laborum numquam distinctio iure! Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Voluptatem doloribus beatae fugiat in harum unde porro itaque! Neque vitae
+                        sunt quod nemo enim voluptas, magni ducimus impedit repellendus aliquam aperiam!
                     </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
+                    <div id="rightImgArticle"></div>
 
-                        </div>
-                        <form action="indexArticle.html">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
                 </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
+                <div id="commentsContainer">
+                    <div class="read">
+                        <div class="line"></div>
+                        <h1>Комментарии</h1>
+                        <div class="line"></div>
                     </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
+                    <!-- Форма написания комментария -->
+                    <div id="commentBlock">
+                        <div id="UserBlock">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="90" viewBox="0 0 20 22"
+                                fill="none">
+                                <path
+                                    d="M0 28H20V23C19.9979 21.1441 19.2597 19.3649 17.9474 18.0526C16.6351 16.7403 14.8559 16.0021 13 16H7C5.14413 16.0021 3.36489 16.7403 2.05259 18.0526C0.740295 19.3649 0.00211736 21.1441 0 23V28ZM3 7C3 8.38447 3.41054 9.73785 4.17971 10.889C4.94888 12.0401 6.04213 12.9373 7.32122 13.4672C8.6003 13.997 10.0078 14.1356 11.3656 13.8655C12.7235 13.5954 13.9708 12.9287 14.9497 11.9497C15.9287 10.9708 16.5954 9.7235 16.8655 8.36563C17.1356 7.00777 16.997 5.6003 16.4672 4.32122C15.9373 3.04213 15.0401 1.94888 13.889 1.17971C12.7378 0.410543 11.3845 0 10 0C8.14348 0 6.36301 0.737498 5.05025 2.05025C3.7375 3.36301 3 5.14348 3 7Z"
+                                    fill="#C9CBE5" />
+                            </svg>
                         </div>
-                        <form action="indexArticle.html">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
+                        <div id="commentPlace">
+                            <form action="" method="post">
+                                <label for=""><input type="text" id="nick" placeholder="Ваше имя"></label>
+                                <textarea id="comment" style="resize: none; margin-top: 5px;"
+                                    placeholder="Поле для комментария"></textarea>
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27"
+                                        fill="none">
+                                        <path
+                                            d="M2.03854 0.152604C0.92479 -0.404271 -0.310836 0.655103 0.0707268 1.84104L2.7501 10.1689C2.80278 10.3326 2.89948 10.4786 3.02961 10.5911C3.15974 10.7035 3.31829 10.778 3.48791 10.8064L14.6151 12.6617C15.1373 12.7489 15.1373 13.4989 14.6151 13.586L3.48885 15.4404C3.31906 15.4686 3.16031 15.543 3.03 15.6555C2.89969 15.7679 2.80285 15.9141 2.7501 16.0779L0.0707268 24.4085C-0.310836 25.5945 0.923852 26.6539 2.03854 26.097L25.4704 14.3829C26.5073 13.8645 26.5073 12.386 25.4704 11.8667L2.03854 0.152604Z"
+                                            fill="#C9CBE5" />
+                                    </svg>
+                                </button>
+                            </form>
                         </div>
-                        <form action="indexArticle.html">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
                     </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.html">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.html">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
+                    <!-- Блок комментариев -->
+                    <? foreach ($mass as $elem) { ?>
+                        <div id="placeAllComment">
+                            <!-- Комментарий -->
+                            <div class="userCommentBlock">
+                                <div class="userIco">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="50" viewBox="0 0 20 22"
+                                        fill="none">
+                                        <path
+                                            d="M0 28H20V23C19.9979 21.1441 19.2597 19.3649 17.9474 18.0526C16.6351 16.7403 14.8559 16.0021 13 16H7C5.14413 16.0021 3.36489 16.7403 2.05259 18.0526C0.740295 19.3649 0.00211736 21.1441 0 23V28ZM3 7C3 8.38447 3.41054 9.73785 4.17971 10.889C4.94888 12.0401 6.04213 12.9373 7.32122 13.4672C8.6003 13.997 10.0078 14.1356 11.3656 13.8655C12.7235 13.5954 13.9708 12.9287 14.9497 11.9497C15.9287 10.9708 16.5954 9.7235 16.8655 8.36563C17.1356 7.00777 16.997 5.6003 16.4672 4.32122C15.9373 3.04213 15.0401 1.94888 13.889 1.17971C12.7378 0.410543 11.3845 0 10 0C8.14348 0 6.36301 0.737498 5.05025 2.05025C3.7375 3.36301 3 5.14348 3 7Z"
+                                            fill="#C9CBE5" />
+                                    </svg>
+                                </div>
+                                <div class="userComment">
+                                    <div class="userInfo">
+                                        <div class="userName">
+                                            <?= $elem['user_name'] ?>
+                                        </div>
+                                        <div class="commentDate">
+                                            <?= $elem['date'] ?>
+                                        </div>
+                                    </div>
+                                    <div class="textComment">
+                                        <?= $elem['comments_text'] ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <? } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Конец контента -->
+    <!-- Подвал -->
     <footer>
         <div id="social">
             <h4>Соц-сети автора:</h4>
@@ -341,10 +267,10 @@
             <span>©Lafy-qx | Все права защищены.<a href="#" id="confidentiality">Политика конфиденциальности</a>.</span>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
