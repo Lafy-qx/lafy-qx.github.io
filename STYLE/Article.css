@@ -62,7 +62,7 @@ h4 {
 }
 
 #UserBlock {
-    
+
     display: flex;
     align-items: end;
     justify-content: center;
@@ -71,10 +71,12 @@ h4 {
     border: 2px solid rgb(48, 0, 88);
     border-radius: 5px;
 }
-#commentPlace{
+
+#commentPlace {
     width: 100%;
-    
+
 }
+
 #commentPlace form {
     margin-left: 5px;
     align-items: start;
@@ -91,9 +93,11 @@ h4 {
     background-color: rgba(255, 255, 255, 0);
     outline: none;
 }
-label{
+
+label {
     width: 100%;
 }
+
 #comment {
     width: 100%;
     padding-left: 3px;
@@ -105,7 +109,7 @@ label{
 }
 
 #placeAllComment {
-    height:  max-content;
+    height: max-content;
     margin-top: 10px;
 }
 
@@ -115,11 +119,13 @@ label{
     display: flex;
     margin-bottom: 20px;
 }
-.userCommentBlock:hover{
-    background-color: rgba(255, 255, 255, 0.042)!important;
+
+.userCommentBlock:hover {
+    background-color: rgba(255, 255, 255, 0.042) !important;
     border-radius: 5px;
 
 }
+
 .userComment {
     margin-left: 10px;
 
@@ -127,19 +133,30 @@ label{
     display: flex;
     flex-direction: column;
 }
-.userInfo{
+
+.userInfo {
     display: flex;
 }
-.commentDate{
-    margin-left: 10px;
-    color:#c9cbe577 !important;
-}
-.textComment{
-    margin-top: 10px;
-    color:#c9cbe5bb !important;
-}
-/* Медиазапросы для ноутбук body*/
 
+.commentDate {
+    margin-left: 10px;
+    color: #c9cbe577 !important;
+}
+
+.textComment {
+    margin-top: 10px;
+    color: #c9cbe5bb !important;
+}
+
+#sendMessage {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    position: absolute;
+    margin-top: 65px;
+    right: 26.5rem;
+}
+
+/* Медиазапросы для ноутбук body*/
 @media (min-width: 992px) and (max-width: 1199px) {
     #imgArticle {
         height: 400px;
@@ -152,6 +169,10 @@ label{
 
     #rightImgArticle {
         width: 40%;
+    }
+
+    #sendMessage {
+        right: 11.5rem;
     }
 }
 
@@ -169,6 +190,9 @@ label{
     #rightImgArticle {
         width: 50%;
     }
+    #sendMessage {
+        right: 8rem;
+    }
 }
 
 /* Адаптивность под телефон body*/
@@ -180,13 +204,20 @@ label{
     #rightImgArticle {
         height: 300px;
     }
-    .commentDate, .userName{
+
+    .commentDate,
+    .userName {
         font-size: 0.8rem;
     }
-    #leftTextArticle{
+
+    #leftTextArticle {
         width: 100%;
     }
-    #rightImgArticle{
+
+    #rightImgArticle {
         display: none;
+    }
+    #sendMessage {
+        right: 4rem;
     }
 }

@@ -1,3 +1,37 @@
+<?
+error_reporting(E_ALL);
+ini_set("display_error", "on");
+
+$host = "localhost";
+$login = "root";
+$pass = "";
+$database = "coursework";
+$link = mysqli_connect($host, $login, $pass, $database);
+// Сортировка статей по дате
+$sort = "сортировка по умолчанию";
+if (isset($_POST['sortList'])) {
+    $sort = $_POST['sortList'];
+    if ($_POST['sortList'] == "сортировка по умолчанию") {
+        $allArticle = "SELECT * FROM article";
+        mysqli_query($link, $allArticle) or die(mysqli_error($link));
+    } else if ($_POST['sortList'] == "сортировка по старым") {
+        $allArticle = "SELECT * FROM `article` ORDER BY `article`.`date` ASC";
+        mysqli_query($link, $allArticle) or die(mysqli_error($link));
+    } elseif ($_POST['sortList'] == "сортировка по новым") {
+        $allArticle = "SELECT * FROM `article` ORDER BY `article`.`date` DESC";
+        mysqli_query($link, $allArticle) or die(mysqli_error($link));
+    }
+} else {
+    $sort = "сортировка по умолчанию";
+    $allArticle = "SELECT * FROM article";
+}
+
+$resltAllArticle = mysqli_query($link, $allArticle) or die(mysqli_error($link));
+for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
+    ;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,199 +150,59 @@
                 <h1>Статьи</h1>
                 <div class="line"></div>
             </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
+            <div id="sortBlock">
+                <form action="" method="post" name="user_mode">
+                    <select name="sortList" id="sortSelect" OnChange='user_mode.submit();'>
+                        <option selected="selected" disable style="display:none"><?= $sort ?></option>
+                        <option>сортировка по умолчанию</option>
+                        <option>сортировка по старым</option>
+                        <option>сортировка по новым</option>
+                    </select>
+                </form>
 
+            </div>
+            <? foreach ($mass as $elem) { ?>
+                <div class="cardNewsBlock">
+                    <div class="imgnews"></div>
+                    <div class="blockTextNews">
+                        <div class="textCard">
+                            <p class="nameCard">
+                                <?= $elem['card_name'] ?>
+                            </p>
+                            <p class="surNameCard">
+                                <?= $elem['subtitle'] ?>
+                            </p>
                         </div>
-                        <form action="indexArticle.php">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
+                        <div class="blockNewsDate">
+                            <div class="likeDate">
+                                <p><span>0</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
+                                        fill="none">
+                                        <path
+                                            d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
+                                            fill="#C9CBE6" />
+                                    </svg>
+                                </p>
+                                <p>
+                                    <?= $elem['date'] ?>
+                                </p>
+
+                            </div>
+                            <form action="indexArticle.php">
+                                <button>читать
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
+                                            fill="#C9CBE6" />
+                                    </svg></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.php">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.php">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.php">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.php">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="cardNewsBlock">
-                <div class="imgnews"></div>
-                <div class="blockTextNews">
-                    <div class="textCard">
-                        <p class="nameCard">Семейная жизнь</p>
-                        <p class="surNameCard">Успек семейной жизни состоит в том, что...</p>
-                    </div>
-                    <div class="blockNewsDate">
-                        <div class="likeDate">
-                            <p><span>0</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                    fill="none">
-                                    <path
-                                        d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                        fill="#C9CBE6" />
-                                </svg>
-                            </p>
-                            <p>date:121321</p>
-
-                        </div>
-                        <form action="indexArticle.php">
-                            <button>читать
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                    fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                        fill="#C9CBE6" />
-                                </svg></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <? } ?>
         </div>
+    </div>
     </div>
     <footer>
         <div id="social">

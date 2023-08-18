@@ -12,6 +12,28 @@ $allComments = "SELECT * FROM comments";
 $resltComment = mysqli_query($link, $allComments) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
     ;
+
+function textValidation($date)
+{
+    $date = trim($date);
+    $date = stripslashes($date);
+    $date = htmlspecialchars($date);
+    $date = strtr($date, "+&=/", '   ');
+    return $date;
+}
+;
+
+if (!empty($_POST) && isset($_POST)) {
+    $nickComment = textValidation($_POST["nickComment"]);
+    $textComment = textValidation($_POST["textComment"]);
+    $date = date("Y-m-d");
+    if ($_POST['textComment'] != '' && $_POST['nickComment'] != '') {
+        $add = "INSERT INTO comments SET user_name='$nickComment', comments_text='$textComment', date='$date'";
+        mysqli_query($link, $add);
+        header('location:#comment');
+        die();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -169,6 +191,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
                     <div id="rightImgArticle"></div>
 
                 </div>
+                <a name="comment"></a><!--Якорь-->
                 <div id="commentsContainer">
                     <div class="read">
                         <div class="line"></div>
@@ -187,11 +210,13 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
                         </div>
                         <div id="commentPlace">
                             <form action="" method="post">
-                                <label for=""><input type="text" id="nick" placeholder="Ваше имя"></label>
+                                <label for=""><input type="text" id="nick" name="nickComment"
+                                        placeholder="Ваше имя"></label>
                                 <textarea id="comment" style="resize: none; margin-top: 5px;"
-                                    placeholder="Поле для комментария"></textarea>
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27"
+                                    placeholder="Поле для комментария" name="textComment">
+                                </textarea>
+                                <button id="sendMessage">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 27 27"
                                         fill="none">
                                         <path
                                             d="M2.03854 0.152604C0.92479 -0.404271 -0.310836 0.655103 0.0707268 1.84104L2.7501 10.1689C2.80278 10.3326 2.89948 10.4786 3.02961 10.5911C3.15974 10.7035 3.31829 10.778 3.48791 10.8064L14.6151 12.6617C15.1373 12.7489 15.1373 13.4989 14.6151 13.586L3.48885 15.4404C3.31906 15.4686 3.16031 15.543 3.03 15.6555C2.89969 15.7679 2.80285 15.9141 2.7501 16.0779L0.0707268 24.4085C-0.310836 25.5945 0.923852 26.6539 2.03854 26.097L25.4704 14.3829C26.5073 13.8645 26.5073 12.386 25.4704 11.8667L2.03854 0.152604Z"
@@ -228,11 +253,14 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
                                     </div>
                                 </div>
                             </div>
-                        <? } ?>
-                    </div>
+                        </div>
+                    <? } ?>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
     <!-- Конец контента -->
     <!-- Подвал -->

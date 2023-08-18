@@ -1,36 +1,61 @@
-#news{
+#news {
     height: max-content;
 }
-.cardNewsBlock{
-    margin-top: 30px;
+
+.cardNewsBlock {
+    margin-top: 20px;
     height: 280px;
-    justify-content:center;
+    justify-content: center;
 }
-.imgnews, .blockTextNews{
+
+.imgnews,
+.blockTextNews {
     width: 50%;
 }
-.imgnews{
+
+.imgnews {
     border-radius: 5px;
     background-image: url(../image/kartinki-schastlivoj-semi-1.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-.blockTextNews{
+
+.blockTextNews {
     margin-left: 5px;
     display: flex;
     flex-direction: column;
-    
+
 }
-.blockNewsDate{
+
+.blockNewsDate {
     margin-top: 69px;
 }
+
+#sortBlock {
+    display: flex;
+    justify-content: end;
+    height: max-content;
+}
+
+#sortSelect {
+    border: 0 !important;
+    background-color: rgba(255, 255, 255, 0) !important;
+    border: 2px solid rgba(48, 0, 88, 0.713) !important;
+    border-radius: 5px;
+}
+
+option {
+    color: rgb(66, 66, 66)!important;
+}
+
 /* Медиазапросы для ноутбук body*/
 @media (min-width: 992px) and (max-width: 1199px) {
     .cardNewsBlock {
         height: 250px;
     }
-    .blockNewsDate{
+
+    .blockNewsDate {
         margin-top: 46px
     }
 
@@ -41,10 +66,11 @@
     .cardNewsBlock {
         height: 220px;
     }
-    .blockNewsDate{
+
+    .blockNewsDate {
         margin-top: 16px
     }
-    
+
 }
 
 /* Адаптивность под телефон body*/
@@ -52,7 +78,8 @@
     .cardNewsBlock {
         height: 200px;
     }
-    .blockNewsDate{
+
+    .blockNewsDate {
         margin-top: -5px
     }
 }
