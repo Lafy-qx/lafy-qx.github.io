@@ -1,3 +1,61 @@
+<?
+// session_start();
+error_reporting(E_ALL);
+ini_set("display_error", "on");
+
+$host = "localhost";
+$login = "root";
+$pass = "";
+$database = "coursework";
+$link = mysqli_connect($host, $login, $pass, $database);
+
+$allContact = "SELECT * FROM сontact_form";
+$resltContact = mysqli_query($link, $allContact) or die(mysqli_error($link));
+for ($mass = []; $row = mysqli_fetch_assoc($resltContact); $mass[] = $row)
+    ;
+
+if (!empty($_POST) && isset($_POST)) {
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
+
+    if ($phone != '' && $email != '') {
+        $add = "INSERT INTO сontact_form SET phone='$phone', email='$email'";
+        mysqli_query($link, $add);
+        header('location:#comment');
+        die();
+    } else {
+        // $_SESSION["error"] = "Контактные формы не заполнены или заполнены некоректно";
+        ?>
+        <Script>
+            let modal = document.querySelector(".modal")
+            modal.classList.add('displayBlock')
+            let modalBody = document.querySelector(".modal-body")
+            modalBody.innerHTML = "<p>Контактные формы не заполнены или заполнены некоректно</p>"
+                    // document.querySelector(".modalButton").dispatchEvent(new Event("click"));
+                    // new bootstrap.Modal(document.querySelector(".modalButton")).show();
+        </Script>
+    <?
+    }
+
+    //     $res ='<div class="modal" tabindex="-1">
+//     <div class="modal-dialog">
+//         <div class="modal-content">
+//             <div class="modal-header">
+//                 <h5 class="modal-title">Оповещение</h5>
+//                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//             </div>
+//             <div class="modal-body">
+//                 <p>Контактные формы не заполнены или заполнены некоректно</p>
+//             </div>
+//             <div class="modal-footer">
+//                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>      
+//             </div>
+//         </div>
+//     </div>
+// </div>'
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +94,7 @@
                         <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
+                        <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                     </li>
 
                 </ul>
@@ -69,7 +127,7 @@
                     <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                 </li>
                 <li class="nav-item border-bottom">
-                    <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
+                    <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                 </li>
             </ul>
             <div id="contactBlock">
@@ -107,6 +165,7 @@
     </div>
     <!-- Конец мобильного меню -->
     <!-- Конец header -->
+
     <!--Модальное окно-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -118,10 +177,17 @@
                 </div>
                 <form name="feedbackCity" action="" method="POST">
                     <div class="modal-body">
-                        <label for=""><span>Номер телефона:</span><br><input type="text" name=""
+                        <? if (isset($_SESSION["error"])) {
+                            ?>
+                            <p>
+                                <?= $_SESSION["error"] ?>
+                            </p>
+                        <?
+                        } ?>
+                        <label for=""><span>Номер телефона:</span><br><input type="text" name="phone"
                                 placeholder="+7(918)262-75-97" size="41"></label><br>
-                        <label for="city"><span>Email:</span><br><input type="text" name="" placeholder="email@mail.ru"
-                                size="41"></label>
+                        <label for="city"><span>Email:</span><br><input type="text" name="email"
+                                placeholder="email@mail.ru" size="41"></label>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn " data-bs-dismiss="modal">Закрыть</button>
@@ -197,7 +263,7 @@
                             выселю черта</p>
                     </div>
 
-                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">узнать подробнее
+                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="modalButton">узнать подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"

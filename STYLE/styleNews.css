@@ -44,7 +44,10 @@
     border: 2px solid rgba(48, 0, 88, 0.713) !important;
     border-radius: 5px;
 }
-
+.likeDate input{
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
 option {
     color: rgb(66, 66, 66)!important;
 }
@@ -60,7 +63,12 @@ option {
     }
 
 }
-
+.displayBlock{
+    display: block;
+}
+.displayNone{
+    display: none;
+}
 /* Медиазапросы для планшета body*/
 @media (min-width: 768px) and (max-width: 991px) {
     .cardNewsBlock {

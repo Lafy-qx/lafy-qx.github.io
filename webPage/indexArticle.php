@@ -73,7 +73,7 @@ if (!empty($_POST) && isset($_POST)) {
                         <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
+                        <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                     </li>
 
                 </ul>
@@ -106,7 +106,7 @@ if (!empty($_POST) && isset($_POST)) {
                     <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                 </li>
                 <li class="nav-item border-bottom">
-                    <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
+                    <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                 </li>
             </ul>
             <div id="contactBlock">

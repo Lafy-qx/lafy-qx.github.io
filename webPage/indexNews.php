@@ -30,7 +30,19 @@ $resltAllArticle = mysqli_query($link, $allArticle) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
     ;
 
-
+//Коунтер сердец
+// $heart = 0;
+// if (!empty($_POST) && isset($_POST)) {
+//     $heart = $heart + 1;
+//     $revork = "UPDATE countHeart SET count = '$heart'"; 
+//     mysqli_query ($link,$revork) or die(mysqli_error($link));
+// } else {
+//     $heart = 0;
+//     $allHeart = "SELECT * FROM countHeart";
+// }
+// $resltAllHeart = mysqli_query($link, $allHeart) or die(mysqli_error($link));
+// for ($massCount = []; $row = mysqli_fetch_assoc($resltAllHeart); $mass[] = $row)
+//     ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +83,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
                         <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
+                        <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                     </li>
 
                 </ul>
@@ -104,7 +116,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
                     <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
                 </li>
                 <li class="nav-item border-bottom">
-                    <a class="nav-link" href="../webPage/indexAboutMe.html">Обо мне</a>
+                    <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                 </li>
             </ul>
             <div id="contactBlock">
@@ -137,7 +149,6 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
                     <p>политика конфиденциальности</p>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- Конец мобильного меню -->
@@ -153,13 +164,14 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
             <div id="sortBlock">
                 <form action="" method="post" name="user_mode">
                     <select name="sortList" id="sortSelect" OnChange='user_mode.submit();'>
-                        <option selected="selected" disable style="display:none"><?= $sort ?></option>
+                        <option selected="selected" disable style="display:none">
+                            <?= $sort ?>
+                        </option>
                         <option>сортировка по умолчанию</option>
                         <option>сортировка по старым</option>
                         <option>сортировка по новым</option>
                     </select>
                 </form>
-
             </div>
             <? foreach ($mass as $elem) { ?>
                 <div class="cardNewsBlock">
@@ -175,18 +187,9 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
                         </div>
                         <div class="blockNewsDate">
                             <div class="likeDate">
-                                <p><span>0</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
-                                        fill="none">
-                                        <path
-                                            d="M7 13.0001L5.985 12.0649C2.38 8.75646 0 6.56736 0 3.89652C0 1.70742 1.694 6.10352e-05 3.85 6.10352e-05C5.068 6.10352e-05 6.237 0.573903 7 1.47363C7.763 0.573903 8.932 6.10352e-05 10.15 6.10352e-05C12.306 6.10352e-05 14 1.70742 14 3.89652C14 6.56736 11.62 8.75646 8.015 12.0649L7 13.0001Z"
-                                            fill="#C9CBE6" />
-                                    </svg>
-                                </p>
                                 <p>
                                     <?= $elem['date'] ?>
                                 </p>
-
                             </div>
                             <form action="indexArticle.php">
                                 <button>читать
@@ -235,7 +238,6 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
             <span>©Lafy-qx | Все права защищены.<a href="#" id="confidentiality">Политика конфиденциальности</a>.</span>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
