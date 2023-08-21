@@ -25,7 +25,23 @@
     margin-left: 5px;
     display: flex;
     flex-direction: column;
+}
 
+#button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 2px solid rgba(48, 0, 88, 0.713);
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#button:hover {
+    background-color: rgba(48, 0, 88, 0.713);
+    box-shadow: 0px 0px 15px 6px rgba(139, 0, 255, 0.32);
 }
 
 .blockNewsDate {
@@ -44,12 +60,14 @@
     border: 2px solid rgba(48, 0, 88, 0.713) !important;
     border-radius: 5px;
 }
-.likeDate input{
+
+.likeDate input {
     border: 0;
     background-color: rgba(255, 255, 255, 0);
 }
+
 option {
-    color: rgb(66, 66, 66)!important;
+    color: rgb(66, 66, 66) !important;
 }
 
 /* Медиазапросы для ноутбук body*/
@@ -63,12 +81,15 @@ option {
     }
 
 }
-.displayBlock{
+
+.displayBlock {
     display: block;
 }
-.displayNone{
+
+.displayNone {
     display: none;
 }
+
 /* Медиазапросы для планшета body*/
 @media (min-width: 768px) and (max-width: 991px) {
     .cardNewsBlock {

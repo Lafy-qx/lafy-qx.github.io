@@ -114,9 +114,7 @@ body {
     }
 
     .header {
-
         padding: 0 10% !important;
-
     }
 
 }
@@ -128,9 +126,7 @@ body {
     }
 
     .header {
-
         padding: 0 6% !important;
-
     }
 }
 
@@ -173,13 +169,11 @@ body {
     background-size: cover;
     mix-blend-mode: screen;
     display: flex;
-
 }
 
 #leftblock {
     width: 60%;
     padding: 6% 5%;
-
 }
 
 #leftblock p {
@@ -189,7 +183,6 @@ body {
 
 #buttonBlock {
     margin-top: 60px;
-
 }
 
 #buttonBlock a {
@@ -198,7 +191,6 @@ body {
 
 #buttonBlock button {
     border: 2px solid rgba(48, 0, 88, 0.713);
-    ;
     border-radius: 5px;
     margin-right: 10px;
     width: 150px;
@@ -246,7 +238,6 @@ body {
 .read h1 {
     margin: 10px;
     font-size: 2.2rem;
-
 }
 
 .line {
@@ -436,7 +427,6 @@ footer {
     }
 
     #leftblock {
-
         width: 100%;
     }
 
@@ -446,7 +436,6 @@ footer {
 
     .surNameCard {
         font-size: 0.8rem;
-
     }
 
     #rightblock {

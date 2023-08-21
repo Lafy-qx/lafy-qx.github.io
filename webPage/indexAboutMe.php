@@ -2,6 +2,15 @@
 // session_start();
 error_reporting(E_ALL);
 ini_set("display_error", "on");
+function textValidation($date)
+{
+    $date = trim($date);
+    $date = stripslashes($date);
+    $date = htmlspecialchars($date);
+    $date = strtr($date, "+&=/", '   ');
+    return $date;
+}
+;
 
 $host = "localhost";
 $login = "root";
@@ -15,8 +24,8 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltContact); $mass[] = $row)
     ;
 
 if (!empty($_POST) && isset($_POST)) {
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
+    $phone = textValidation($_POST["phone"]);
+    $email = textValidation($_POST["email"]);
 
     if ($phone != '' && $email != '') {
         $add = "INSERT INTO сontact_form SET phone='$phone', email='$email'";

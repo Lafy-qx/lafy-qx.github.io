@@ -30,19 +30,13 @@ $resltAllArticle = mysqli_query($link, $allArticle) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
     ;
 
-//Коунтер сердец
-// $heart = 0;
-// if (!empty($_POST) && isset($_POST)) {
-//     $heart = $heart + 1;
-//     $revork = "UPDATE countHeart SET count = '$heart'"; 
-//     mysqli_query ($link,$revork) or die(mysqli_error($link));
-// } else {
-//     $heart = 0;
-//     $allHeart = "SELECT * FROM countHeart";
-// }
-// $resltAllHeart = mysqli_query($link, $allHeart) or die(mysqli_error($link));
-// for ($massCount = []; $row = mysqli_fetch_assoc($resltAllHeart); $mass[] = $row)
-//     ;
+
+// $comm = "SELECT * FROM article INNER JOIN comments ON article.id = comments.article_id";
+// mysqli_query($link, $comm) or die(mysqli_error($link));
+// $id = $_GET['id'];
+// $query = "SELECT * FROM article WHERE id=$id";
+// $result = mysqli_query($link, $query) or die(mysqli_error($link));
+// $url = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,35 +168,38 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
                 </form>
             </div>
             <? foreach ($mass as $elem) { ?>
-                <div class="cardNewsBlock">
-                    <div class="imgnews"></div>
-                    <div class="blockTextNews">
-                        <div class="textCard">
-                            <p class="nameCard">
-                                <?= $elem['card_name'] ?>
-                            </p>
-                            <p class="surNameCard">
-                                <?= $elem['subtitle'] ?>
-                            </p>
-                        </div>
-                        <div class="blockNewsDate">
-                            <div class="likeDate">
-                                <p>
-                                    <?= $elem['date'] ?>
+                <a style="text-decoration: none;" href="indexArticle.php?id=<?= $elem['id'] ?>">
+                    <div class="cardNewsBlock">
+                        <div class="imgnews"></div>
+                        <div class="blockTextNews">
+                            <div class="textCard">
+                                <p class="nameCard">
+                                    <?= $elem['card_name'] ?>
+                                </p>
+                                <p class="surNameCard">
+                                    <?= $elem['subtitle'] ?>
                                 </p>
                             </div>
-                            <form action="indexArticle.php">
-                                <button>читать
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
-                                        fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
-                                            fill="#C9CBE6" />
-                                    </svg></button>
-                            </form>
+                            <div class="blockNewsDate">
+                                <div class="likeDate">
+                                    <p>
+                                        <?= $elem['date'] ?>
+                                    </p>
+                                </div>
+                                <form>
+                                    <div id="button">читатью
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
+                                            fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
+                                                fill="#C9CBE6" />
+                                        </svg>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             <? } ?>
         </div>
     </div>

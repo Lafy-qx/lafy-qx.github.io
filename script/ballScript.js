@@ -12,6 +12,7 @@ let textBall = document.getElementById("textBall")
 search.addEventListener("click", readSearchBall)
 function readSearchBall() {
     if (textBall.value != "") {
+        let warning = document.getElementById("warning")
         let timer = null;
         const rnd = Math.floor(Math.random() * resultBall.length)
 
@@ -37,7 +38,7 @@ function readSearchBall() {
         timer = setTimeout(() => imgball.classList.remove('imgBallAnimation'), 1800);
     }
     else {
-        let warning = document.getElementById("warning")
+        
         warning.innerHTML = "заполните поле"
 
     }

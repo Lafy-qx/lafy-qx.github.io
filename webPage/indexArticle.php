@@ -1,6 +1,7 @@
 <?
 error_reporting(E_ALL);
 ini_set("display_error", "on");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $host = "localhost";
 $login = "root";
@@ -12,7 +13,6 @@ $allComments = "SELECT * FROM comments";
 $resltComment = mysqli_query($link, $allComments) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
     ;
-
 function textValidation($date)
 {
     $date = trim($date);
@@ -22,18 +22,32 @@ function textValidation($date)
     return $date;
 }
 ;
+$id = mysqli_real_escape_string($link, $_GET['id']);
+$query = "SELECT * FROM article INNER JOIN comments ON article.id = comments.article_id";
+$res = mysqli_query($link, $query) or die(mysqli_error($link));
+$post = mysqli_fetch_assoc($res);
 
 if (!empty($_POST) && isset($_POST)) {
+    $query = "SELECT * FROM comments WHERE article_id=" . $id . "";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    $post = mysqli_fetch_assoc($res);
     $nickComment = textValidation($_POST["nickComment"]);
     $textComment = textValidation($_POST["textComment"]);
     $date = date("Y-m-d");
-    if ($_POST['textComment'] != '' && $_POST['nickComment'] != '') {
-        $add = "INSERT INTO comments SET user_name='$nickComment', comments_text='$textComment', date='$date'";
-        mysqli_query($link, $add);
-        header('location:#comment');
+    if ($textComment != '' && $nickComment != '') {
+        $sql = "INSERT INTO comments (user_name, comments_text, date, article_id) VALUES (? , ? , ? , ? )";
+        $command = $link->prepare($sql);
+        $command->bind_param("ssss", $nickComment, $textComment, $date, $id);
+        $command->execute();
+        mysqli_close($link);
+
+        // $add = "INSERT INTO comments SET user_name='$nickComment', comments_text='$textComment', date='$date' article_id='$id'";
+        // mysqli_query($link, $add);
+        header("location: indexArticle.php?id=$id");
         die();
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -191,7 +205,7 @@ if (!empty($_POST) && isset($_POST)) {
                     <div id="rightImgArticle"></div>
 
                 </div>
-                <a name="comment"></a><!--Якорь-->
+                <a id="yakor"></a><!--Якорь-->
                 <div id="commentsContainer">
                     <div class="read">
                         <div class="line"></div>
@@ -212,49 +226,54 @@ if (!empty($_POST) && isset($_POST)) {
                             <form action="" method="post">
                                 <label for=""><input type="text" id="nick" name="nickComment"
                                         placeholder="Ваше имя"></label>
-                                <textarea id="comment" style="resize: none; margin-top: 5px;"
-                                    placeholder="Поле для комментария" name="textComment">
+                                <div id="containerComment">
+                                    <textarea id="comment" style="resize: none;margin-top:5px" name="textComment">
                                 </textarea>
-                                <button id="sendMessage">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 27 27"
-                                        fill="none">
-                                        <path
-                                            d="M2.03854 0.152604C0.92479 -0.404271 -0.310836 0.655103 0.0707268 1.84104L2.7501 10.1689C2.80278 10.3326 2.89948 10.4786 3.02961 10.5911C3.15974 10.7035 3.31829 10.778 3.48791 10.8064L14.6151 12.6617C15.1373 12.7489 15.1373 13.4989 14.6151 13.586L3.48885 15.4404C3.31906 15.4686 3.16031 15.543 3.03 15.6555C2.89969 15.7679 2.80285 15.9141 2.7501 16.0779L0.0707268 24.4085C-0.310836 25.5945 0.923852 26.6539 2.03854 26.097L25.4704 14.3829C26.5073 13.8645 26.5073 12.386 25.4704 11.8667L2.03854 0.152604Z"
-                                            fill="#C9CBE5" />
-                                    </svg>
-                                </button>
+                                    <a href="#yakor"><!--Якорь-->
+                                        <button id="sendMessage">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
+                                                viewBox="0 0 27 27" fill="none">
+                                                <path
+                                                    d="M2.03854 0.152604C0.92479 -0.404271 -0.310836 0.655103 0.0707268 1.84104L2.7501 10.1689C2.80278 10.3326 2.89948 10.4786 3.02961 10.5911C3.15974 10.7035 3.31829 10.778 3.48791 10.8064L14.6151 12.6617C15.1373 12.7489 15.1373 13.4989 14.6151 13.586L3.48885 15.4404C3.31906 15.4686 3.16031 15.543 3.03 15.6555C2.89969 15.7679 2.80285 15.9141 2.7501 16.0779L0.0707268 24.4085C-0.310836 25.5945 0.923852 26.6539 2.03854 26.097L25.4704 14.3829C26.5073 13.8645 26.5073 12.386 25.4704 11.8667L2.03854 0.152604Z"
+                                                    fill="#C9CBE5" />
+                                            </svg>
+                                        </button>
+                                    </a>
+                                </div>
                             </form>
                         </div>
                     </div>
                     <!-- Блок комментариев -->
-                    <? foreach ($mass as $elem) { ?>
-                        <div id="placeAllComment">
-                            <!-- Комментарий -->
-                            <div class="userCommentBlock">
-                                <div class="userIco">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="50" viewBox="0 0 20 22"
-                                        fill="none">
-                                        <path
-                                            d="M0 28H20V23C19.9979 21.1441 19.2597 19.3649 17.9474 18.0526C16.6351 16.7403 14.8559 16.0021 13 16H7C5.14413 16.0021 3.36489 16.7403 2.05259 18.0526C0.740295 19.3649 0.00211736 21.1441 0 23V28ZM3 7C3 8.38447 3.41054 9.73785 4.17971 10.889C4.94888 12.0401 6.04213 12.9373 7.32122 13.4672C8.6003 13.997 10.0078 14.1356 11.3656 13.8655C12.7235 13.5954 13.9708 12.9287 14.9497 11.9497C15.9287 10.9708 16.5954 9.7235 16.8655 8.36563C17.1356 7.00777 16.997 5.6003 16.4672 4.32122C15.9373 3.04213 15.0401 1.94888 13.889 1.17971C12.7378 0.410543 11.3845 0 10 0C8.14348 0 6.36301 0.737498 5.05025 2.05025C3.7375 3.36301 3 5.14348 3 7Z"
-                                            fill="#C9CBE5" />
-                                    </svg>
-                                </div>
-                                <div class="userComment">
-                                    <div class="userInfo">
-                                        <div class="userName">
-                                            <?= $elem['user_name'] ?>
+                    <div id="placeAllComment">
+                        <!-- Комментарий -->
+                        <? foreach ($mass as $elem) { ?>
+                            <? if ($elem['article_id'] == $id) { ?>
+                                <div class="userCommentBlock">
+                                    <div class="userIco">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="50" viewBox="0 0 20 22"
+                                            fill="none">
+                                            <path
+                                                d="M0 28H20V23C19.9979 21.1441 19.2597 19.3649 17.9474 18.0526C16.6351 16.7403 14.8559 16.0021 13 16H7C5.14413 16.0021 3.36489 16.7403 2.05259 18.0526C0.740295 19.3649 0.00211736 21.1441 0 23V28ZM3 7C3 8.38447 3.41054 9.73785 4.17971 10.889C4.94888 12.0401 6.04213 12.9373 7.32122 13.4672C8.6003 13.997 10.0078 14.1356 11.3656 13.8655C12.7235 13.5954 13.9708 12.9287 14.9497 11.9497C15.9287 10.9708 16.5954 9.7235 16.8655 8.36563C17.1356 7.00777 16.997 5.6003 16.4672 4.32122C15.9373 3.04213 15.0401 1.94888 13.889 1.17971C12.7378 0.410543 11.3845 0 10 0C8.14348 0 6.36301 0.737498 5.05025 2.05025C3.7375 3.36301 3 5.14348 3 7Z"
+                                                fill="#C9CBE5" />
+                                        </svg>
+                                    </div>
+                                    <div class="userComment">
+                                        <div class="userInfo">
+                                            <div class="userName">
+                                                <?= $elem['user_name'] ?>
+                                            </div>
+                                            <div class="commentDate">
+                                                <?= $elem['date'] ?>
+                                            </div>
                                         </div>
-                                        <div class="commentDate">
-                                            <?= $elem['date'] ?>
+                                        <div class="textComment">
+                                            <?= $elem['comments_text'] ?>
                                         </div>
                                     </div>
-                                    <div class="textComment">
-                                        <?= $elem['comments_text'] ?>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    <? } ?>
+                            <? } ?>
+                        <? } ?>
+                    </div>
                 </div>
             </div>
         </div>

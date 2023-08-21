@@ -62,7 +62,6 @@ h4 {
 }
 
 #UserBlock {
-
     display: flex;
     align-items: end;
     justify-content: center;
@@ -128,7 +127,6 @@ label {
 
 .userComment {
     margin-left: 10px;
-
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -149,11 +147,18 @@ label {
 }
 
 #sendMessage {
+    width: 25px;
+    height: 25px;
     background-color: rgba(255, 255, 255, 0);
     border: 0;
     position: absolute;
-    margin-top: 65px;
-    right: 26.5rem;
+    margin-top: 35px;
+    right: 10px;
+}
+
+#containerComment {
+    position: relative;
+    width: 100%;
 }
 
 /* Медиазапросы для ноутбук body*/
@@ -171,9 +176,6 @@ label {
         width: 40%;
     }
 
-    #sendMessage {
-        right: 11.5rem;
-    }
 }
 
 /* Медиазапросы для планшета body*/
@@ -189,9 +191,6 @@ label {
 
     #rightImgArticle {
         width: 50%;
-    }
-    #sendMessage {
-        right: 8rem;
     }
 }
 
@@ -216,8 +215,5 @@ label {
 
     #rightImgArticle {
         display: none;
-    }
-    #sendMessage {
-        right: 4rem;
     }
 }
