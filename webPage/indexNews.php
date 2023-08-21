@@ -29,14 +29,6 @@ if (isset($_POST['sortList'])) {
 $resltAllArticle = mysqli_query($link, $allArticle) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
     ;
-
-
-// $comm = "SELECT * FROM article INNER JOIN comments ON article.id = comments.article_id";
-// mysqli_query($link, $comm) or die(mysqli_error($link));
-// $id = $_GET['id'];
-// $query = "SELECT * FROM article WHERE id=$id";
-// $result = mysqli_query($link, $query) or die(mysqli_error($link));
-// $url = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +52,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
     <nav class="navbar navbar-expand header">
         <div class="container-fluid headercontainer">
             <img src="../image/starHeader.png" alt="">
-            <a class="navbar-brand" href="../index.html">Zodiac Sign.</a>
+            <a class="navbar-brand" href="../index.php">Zodiac Sign.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -68,7 +60,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
+                        <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
@@ -101,7 +93,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
         <div class="offcanvas-body">
             <ul class="navbar-nav mobilenavbar">
                 <li class="nav-item border-top">
-                    <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
+                    <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
@@ -187,7 +179,7 @@ for ($mass = []; $row = mysqli_fetch_assoc($resltAllArticle); $mass[] = $row)
                                     </p>
                                 </div>
                                 <form>
-                                    <div id="button">читатью
+                                    <div id="button">читать
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
                                             fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"

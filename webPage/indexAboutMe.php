@@ -2,7 +2,7 @@
 // session_start();
 error_reporting(E_ALL);
 ini_set("display_error", "on");
-function textValidation($date)
+function textValidation($date) //Валидация
 {
     $date = trim($date);
     $date = stripslashes($date);
@@ -23,45 +23,15 @@ $resltContact = mysqli_query($link, $allContact) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltContact); $mass[] = $row)
     ;
 
-if (!empty($_POST) && isset($_POST)) {
+if (!empty($_POST) && isset($_POST)) { //Добавление данных из заполеных форм обратной связи
     $phone = textValidation($_POST["phone"]);
     $email = textValidation($_POST["email"]);
-
     if ($phone != '' && $email != '') {
         $add = "INSERT INTO сontact_form SET phone='$phone', email='$email'";
         mysqli_query($link, $add);
-        header('location:#comment');
+        header('location:#');
         die();
-    } else {
-        // $_SESSION["error"] = "Контактные формы не заполнены или заполнены некоректно";
-        ?>
-        <Script>
-            let modal = document.querySelector(".modal")
-            modal.classList.add('displayBlock')
-            let modalBody = document.querySelector(".modal-body")
-            modalBody.innerHTML = "<p>Контактные формы не заполнены или заполнены некоректно</p>"
-                    // document.querySelector(".modalButton").dispatchEvent(new Event("click"));
-                    // new bootstrap.Modal(document.querySelector(".modalButton")).show();
-        </Script>
-    <?
     }
-
-    //     $res ='<div class="modal" tabindex="-1">
-//     <div class="modal-dialog">
-//         <div class="modal-content">
-//             <div class="modal-header">
-//                 <h5 class="modal-title">Оповещение</h5>
-//                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//             </div>
-//             <div class="modal-body">
-//                 <p>Контактные формы не заполнены или заполнены некоректно</p>
-//             </div>
-//             <div class="modal-footer">
-//                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>      
-//             </div>
-//         </div>
-//     </div>
-// </div>'
 }
 
 ?>
@@ -86,7 +56,7 @@ if (!empty($_POST) && isset($_POST)) {
     <nav class="navbar navbar-expand header">
         <div class="container-fluid headercontainer">
             <img src="../image/starHeader.png" alt="">
-            <a class="navbar-brand" href="../index.html">Zodiac Sign.</a>
+            <a class="navbar-brand" href="../index.php">Zodiac Sign.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -94,7 +64,7 @@ if (!empty($_POST) && isset($_POST)) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
+                        <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
@@ -105,7 +75,6 @@ if (!empty($_POST) && isset($_POST)) {
                     <li class="nav-item">
                         <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
                     </li>
-
                 </ul>
                 <button class="btn disable" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
@@ -117,7 +86,6 @@ if (!empty($_POST) && isset($_POST)) {
             </div>
         </div>
     </nav>
-
     <!-- Начало мобильного меню -->
     <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
@@ -127,7 +95,7 @@ if (!empty($_POST) && isset($_POST)) {
         <div class="offcanvas-body ">
             <ul class="navbar-nav mobilenavbar">
                 <li class="nav-item border-top">
-                    <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
+                    <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
@@ -166,7 +134,6 @@ if (!empty($_POST) && isset($_POST)) {
                     </div>
                 </div>
                 <div id="politics">
-
                     <p>политика конфиденциальности</p>
                 </div>
             </div>
@@ -174,7 +141,6 @@ if (!empty($_POST) && isset($_POST)) {
     </div>
     <!-- Конец мобильного меню -->
     <!-- Конец header -->
-
     <!--Модальное окно-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -224,13 +190,11 @@ if (!empty($_POST) && isset($_POST)) {
             </div>
             <div id="rightblockMe"></div>
         </div>
-
         <div id="news">
             <div class="read">
                 <div class="line"></div>
                 <h1>Price</h1>
                 <div class="line"></div>
-
             </div>
             <div class="cardNewsBlock">
                 <div class="cardNews">
@@ -255,7 +219,6 @@ if (!empty($_POST) && isset($_POST)) {
                         <p class="surNameCard">Проткну дверь соседа иголкой и
                             заселю черта</p>
                     </div>
-
                     <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">узнать подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -271,7 +234,6 @@ if (!empty($_POST) && isset($_POST)) {
                             поведением, достану иголку и
                             выселю черта</p>
                     </div>
-
                     <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="modalButton">узнать подробнее
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -279,7 +241,6 @@ if (!empty($_POST) && isset($_POST)) {
                                 fill="#C9CBE6" />
                         </svg></button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -314,7 +275,6 @@ if (!empty($_POST) && isset($_POST)) {
             <span>©Lafy-qx | Все права защищены.<a href="#" id="confidentiality">Политика конфиденциальности</a>.</span>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>

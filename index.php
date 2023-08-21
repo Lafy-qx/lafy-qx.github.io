@@ -1,25 +1,49 @@
+<?
+error_reporting(E_ALL);
+ini_set("display_error", "on");
+
+$host = "localhost";
+$login = "root";
+$pass = "";
+$database = "coursework";
+$link = mysqli_connect($host, $login, $pass, $database);
+
+$articleLimit3 = "SELECT * FROM article ORDER BY date DESC LIMIT 3 ";
+
+$resltArticleLimit3 = mysqli_query($link, $articleLimit3) or die(mysqli_error($link));
+for ($oneLimit = []; $row = mysqli_fetch_assoc($resltArticleLimit3); $oneLimit[] = $row)
+    ;
+
+$articleLimit3_6 = "SELECT * FROM article LIMIT 3";
+$resltArticleLimit3_6 = mysqli_query($link, $articleLimit3_6) or die(mysqli_error($link));
+for ($twoLimit = []; $row = mysqli_fetch_assoc($resltArticleLimit3_6); $twoLimit[] = $row)
+    ;
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Предсказание</title>
-    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../STYLE/Allstyle.css"><!--Общие стили -->
-    <link rel="stylesheet" href="../STYLE/main.css"><!--Cтили главной  -->
-    <link rel="stylesheet" href="../STYLE/Predictionstyle.css"><!--Стили предсказаний-->
+    <title>Главная</title>
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="STYLE/Allstyle.css"><!--Общие стили -->
+    <link rel="stylesheet" href="STYLE/main.css"><!--Cтили главной  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!--Бутстрап-->
+</head>
 </head>
 
 <body>
     <!-- Начало header -->
     <nav class="navbar navbar-expand header">
         <div class="container-fluid headercontainer">
-            <img src="../image/starHeader.png" alt="">
-            <a class="navbar-brand" href="../index.php">Zodiac Sign.</a>
+            <img src="image/starHeader.png" alt="">
+            <a class="navbar-brand" href="index.php">Zodiac Sign.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,16 +51,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
+                        <a class="nav-link" href="webPage/indexBall.html">Предсказание</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
+                        <a class="nav-link" href="webPage/indexNews.php">Блог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
+                        <a class="nav-link" href="webPage/indexAboutMe.php">Обо мне</a>
                     </li>
 
                 </ul>
@@ -57,18 +81,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <ul class="navbar-nav mobilenavbar ">
-                <li class="nav-item  border-top">
-                    <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
+            <ul class="navbar-nav mobilenavbar">
+                <li class="nav-item">
+                    <a class="nav-link active  border-top" aria-current="page" href="index.php">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
+                    <a class="nav-link" href="webPage/indexBall.html">Предсказание</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../webPage/indexNews.php">Блог</a>
+                    <a class="nav-link" href="webPage/indexNews.php">Блог</a>
                 </li>
-                <li class="nav-item border-bottom">
-                    <a class="nav-link" href="../webPage/indexAboutMe.php">Обо мне</a>
+                <li class="nav-item">
+                    <a class="nav-link border-bottom" href="webPage/indexAboutMe.php">Обо мне</a>
                 </li>
             </ul>
             <div id="contactBlock">
@@ -96,8 +120,10 @@
                             </a>
                         </svg>
                     </div>
+
                 </div>
                 <div id="politics">
+
                     <p>политика конфиденциальности</p>
                 </div>
             </div>
@@ -105,25 +131,103 @@
     </div>
     <!-- Конец мобильного меню -->
     <!-- Конец header -->
+    <!-- Начало контента -->
     <div id="wrapper">
         <div id="helloBlock">
-            <div id="blockBall">
-                <img class="imgball " src="../image/shadowBall.png">
-                <div id="resultBall">
-                    <p id="result"></p>
+            <div id="leftblock">
+                <div id="hellotext">
+                    <h1>Welcome to the Zodiac Sign.</h1>
+                    <p>Знаки зодиака - это участники зодиакального пояса, которым астрология е определенные
+                        метафизические свойства и использует при анализе гороскопов.</p>
+                </div>
+                <div id="buttonBlock">
+                    <button><a href="./webPage/indexAboutMe.php">Подробнее</a></button>
+                    <button><a href="./webPage/indexBall.html">Узнать судьбу</a></button>
                 </div>
             </div>
-            <div id="inpBall">
-                <input type="text" id="textBall" size="40" placeholder="Задайте вопрос">
-                <p id="warning"></p>
-                <div id="blockButt">
-                    <button id="clear">Очистить</button>
-                    <button id="search">Спросить</button>
-                </div>
+            <div id="rightblock"></div>
+        </div>
+        <div id="news">
+            <div class="read">
+                <div class="line"></div>
+                <h1>Последние</h1>
+                <div class="line"></div>
+            </div>
+
+            <div class="cardNewsBlock">
+            <a href=""></a>
+                <? foreach ($oneLimit as $elem) { ?>
+                    <div class="cardNews">
+                        <a style="text-decoration: none;" href="webPage/indexArticle.php?id=<?= $elem['id'] ?>">
+                            <div class="imgCards"></div>
+                            <div class="textCard">
+                                <p class="nameCard">
+                                    <?= $elem['card_name'] ?>
+                                </p>
+                                <p class="surNameCard">
+                                    <?= $elem['subtitle'] ?>
+                                </p>
+                            </div>
+                            <div class="likeDate">
+                                <p>
+                                    <?= $elem['date'] ?>
+                                </p>
+                            </div>
+                            <form>
+                                <div id="button">читать
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
+                                            fill="#C9CBE6" />
+                                    </svg>
+                                </div>
+                            </form>
+                        </a>
+                    </div>
+                <? } ?>
+            </div>
+            <div class="read">
+                <div class="line"></div>
+                <h1>Популярные</h1>
+                <div class="line"></div>
+            </div>
+            <div class="cardNewsBlock">
+                <? foreach ($twoLimit as $elem) { ?>
+                    <div class="cardNews">
+                        <a style="text-decoration: none;" href="webPage/indexArticle.php?id=<?= $elem['id'] ?>">
+                            <div class="imgCards"></div>
+                            <div class="textCard">
+                                <p class="nameCard">
+                                    <?= $elem['card_name'] ?>
+                                </p>
+                                <p class="surNameCard">
+                                    <?= $elem['subtitle'] ?>
+                                </p>
+                            </div>
+                            <div class="likeDate">
+                                <p>
+                                    <?= $elem['date'] ?>
+                                </p>
+                            </div>
+                            <form>
+                                <div id="button">читать
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 13 12"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M7.35349 11.3536L12.3535 6.35358L12.3535 5.64658L7.35348 0.646576L6.64648 1.35358L10.7925 5.50058L0.353485 5.50058L0.353485 6.50058L10.7935 6.50058L6.64548 10.6466L7.35349 11.3536Z"
+                                            fill="#C9CBE6" />
+                                    </svg>
+                                </div>
+                            </form>
+                        </a>
+                    </div>
+                <? } ?>
             </div>
         </div>
     </div>
-    <!--Подвал-->
+    <!-- Конец контента -->
+    <!-- Подвал -->
     <footer>
         <div id="social">
             <h4>Соц-сети автора:</h4>
@@ -155,11 +259,20 @@
             <span>©Lafy-qx | Все права защищены.<a href="#" id="confidentiality">Политика конфиденциальности</a>.</span>
         </div>
     </footer>
-    <script src="../script/ballScript.js"></script>
+
+
+
+
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
-
+</body>
 </body>
 
 </html>

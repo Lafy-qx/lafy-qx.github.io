@@ -9,11 +9,11 @@ $pass = "";
 $database = "coursework";
 $link = mysqli_connect($host, $login, $pass, $database);
 
-$allComments = "SELECT * FROM comments";
+$allComments = "SELECT * FROM comments";//Значения из таблицы комментариев
 $resltComment = mysqli_query($link, $allComments) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
     ;
-function textValidation($date)
+function textValidation($date)//Валидация написанного текста в комментариях
 {
     $date = trim($date);
     $date = stripslashes($date);
@@ -22,7 +22,7 @@ function textValidation($date)
     return $date;
 }
 ;
-$id = mysqli_real_escape_string($link, $_GET['id']);
+$id = mysqli_real_escape_string($link, $_GET['id']);//Получение id статьи из гет запроса
 $query = "SELECT * FROM article INNER JOIN comments ON article.id = comments.article_id";
 $res = mysqli_query($link, $query) or die(mysqli_error($link));
 $post = mysqli_fetch_assoc($res);
@@ -34,13 +34,12 @@ if (!empty($_POST) && isset($_POST)) {
     $nickComment = textValidation($_POST["nickComment"]);
     $textComment = textValidation($_POST["textComment"]);
     $date = date("Y-m-d");
-    if ($textComment != '' && $nickComment != '') {
+    if ($textComment != '' && $nickComment != '') {//создание данных комментария при соблюдении условий
         $sql = "INSERT INTO comments (user_name, comments_text, date, article_id) VALUES (? , ? , ? , ? )";
         $command = $link->prepare($sql);
         $command->bind_param("ssss", $nickComment, $textComment, $date, $id);
         $command->execute();
         mysqli_close($link);
-
         // $add = "INSERT INTO comments SET user_name='$nickComment', comments_text='$textComment', date='$date' article_id='$id'";
         // mysqli_query($link, $add);
         header("location: indexArticle.php?id=$id");
@@ -70,7 +69,7 @@ if (!empty($_POST) && isset($_POST)) {
     <nav class="navbar navbar-expand header">
         <div class="container-fluid headercontainer">
             <img src="../image/starHeader.png" alt="">
-            <a class="navbar-brand" href="../index.html">Zodiac Sign.</a>
+            <a class="navbar-brand" href="../index.php">Zodiac Sign.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -78,7 +77,7 @@ if (!empty($_POST) && isset($_POST)) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
+                        <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
@@ -111,7 +110,7 @@ if (!empty($_POST) && isset($_POST)) {
         <div class="offcanvas-body ">
             <ul class="navbar-nav mobilenavbar">
                 <li class="nav-item border-top">
-                    <a class="nav-link active" aria-current="page" href="../index.html">Главная</a>
+                    <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../webPage/indexBall.html">Предсказание</a>
@@ -227,8 +226,7 @@ if (!empty($_POST) && isset($_POST)) {
                                 <label for=""><input type="text" id="nick" name="nickComment"
                                         placeholder="Ваше имя"></label>
                                 <div id="containerComment">
-                                    <textarea id="comment" style="resize: none;margin-top:5px" name="textComment">
-                                </textarea>
+                                    <textarea id="comment" style="resize: none;margin-top:5px" name="textComment"></textarea>
                                     <a href="#yakor"><!--Якорь-->
                                         <button id="sendMessage">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
