@@ -123,7 +123,6 @@ for ($twoLimit = []; $row = mysqli_fetch_assoc($resltArticleLimit3_6); $twoLimit
 
                 </div>
                 <div id="politics">
-
                     <p>политика конфиденциальности</p>
                 </div>
             </div>
@@ -153,7 +152,6 @@ for ($twoLimit = []; $row = mysqli_fetch_assoc($resltArticleLimit3_6); $twoLimit
                 <h1>Последние</h1>
                 <div class="line"></div>
             </div>
-
             <div class="cardNewsBlock">
             <a href=""></a>
                 <? foreach ($oneLimit as $elem) { ?>

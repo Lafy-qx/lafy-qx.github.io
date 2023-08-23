@@ -9,11 +9,11 @@ $pass = "";
 $database = "coursework";
 $link = mysqli_connect($host, $login, $pass, $database);
 
-$allComments = "SELECT * FROM comments";//Значения из таблицы комментариев
+$allComments = "SELECT * FROM comments"; //Значения из таблицы комментариев
 $resltComment = mysqli_query($link, $allComments) or die(mysqli_error($link));
 for ($mass = []; $row = mysqli_fetch_assoc($resltComment); $mass[] = $row)
     ;
-function textValidation($date)//Валидация написанного текста в комментариях
+function textValidation($date) //Валидация написанного текста в комментариях
 {
     $date = trim($date);
     $date = stripslashes($date);
@@ -22,7 +22,7 @@ function textValidation($date)//Валидация написанного тек
     return $date;
 }
 ;
-$id = mysqli_real_escape_string($link, $_GET['id']);//Получение id статьи из гет запроса
+$id = mysqli_real_escape_string($link, $_GET['id']); //Получение id статьи из гет запроса
 $query = "SELECT * FROM article INNER JOIN comments ON article.id = comments.article_id";
 $res = mysqli_query($link, $query) or die(mysqli_error($link));
 $post = mysqli_fetch_assoc($res);
@@ -34,7 +34,7 @@ if (!empty($_POST) && isset($_POST)) {
     $nickComment = textValidation($_POST["nickComment"]);
     $textComment = textValidation($_POST["textComment"]);
     $date = date("Y-m-d");
-    if ($textComment != '' && $nickComment != '') {//создание данных комментария при соблюдении условий
+    if ($textComment != '' && $nickComment != '') { //создание данных комментария при соблюдении условий
         $sql = "INSERT INTO comments (user_name, comments_text, date, article_id) VALUES (? , ? , ? , ? )";
         $command = $link->prepare($sql);
         $command->bind_param("ssss", $nickComment, $textComment, $date, $id);
@@ -46,7 +46,10 @@ if (!empty($_POST) && isset($_POST)) {
         die();
     }
 }
-
+$allArticle = "SELECT * FROM article";
+$resltAllArticle = mysqli_query($link, $allArticle) or die(mysqli_error($link));
+for ($massArticle = []; $row = mysqli_fetch_assoc($resltAllArticle); $massArticle[] = $row)
+    ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,47 +165,20 @@ if (!empty($_POST) && isset($_POST)) {
         <div id="news">
             <div id="сontentArticleBlock">
                 <div id="imgArticle"></div>
-                <h2>Название</h2>
-                <div id="textContentArticle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur id amet
-                    quae sint. Cupiditate, obcaecati quasi maiores aperiam in eos tempora officiis dolor quisquam nisi
-                    voluptas nihil soluta eaque? Ullam. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Delectus eius mollitia rem assumenda corporis? At porro sapiente tempore hic ducimus, veniam
-                    doloremque laboriosam iure ut id fugiat voluptatum eaque rerum. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Ab, laboriosam aspernatur totam labore deserunt sequi quo nam.
-                    Molestiae fuga officia, sapiente molestias, recusandae ut, culpa consequatur iste deserunt similique
-                    placeat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt maxime molestiae voluptate
-                    laborum illo quisquam, cumque vel, quos eveniet, tempora totam hic iure esse eaque blanditiis
-                    inventore earum? Debitis, reiciendis? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minima sed ipsam, perferendis corporis tempora rem ea ducimus iure eum vitae vero cum omnis saepe
-                    quo culpa! Porro sunt laudantium dolorem? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Explicabo cupiditate ut error sapiente. Incidunt odio quisquam asperiores dolorum modi magnam
-                    pariatur. Ipsa ad neque recusandae quia iste assumenda aperiam dolore! Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Amet vitae labore id iusto doloremque, sequi corrupti delectus minima
-                    repudiandae dolore. In rerum error quisquam animi est voluptatem, vero placeat ipsum! Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Corrupti praesentium assumenda voluptas culpa? Itaque,
-                    voluptate. Inventore reprehenderit itaque, tempora ratione laborum ipsum numquam ullam placeat sit
-                    deleniti amet incidunt eveniet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-                    molestiae deserunt voluptatem totam ad dolorem voluptatibus? Architecto nihil dolorum dicta! Nemo,
-                    magni consequuntur. Nemo ullam tempore reiciendis, eos voluptas illum? Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Accusantium, provident quibusdam? Fugiat blanditiis autem corporis
-                    natus dolores magni deserunt assumenda optio provident eum, nihil ipsum totam eveniet ratione
-                    laboriosam doloribus!
-                </div>
-                <h4>подзаголовок</h4>
-                <div id="twoTextBlockArticle">
-                    <div id="leftTextArticle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero assumenda
-                        molestiae debitis saepe nesciunt sunt nostrum, quo error facilis iure quis corrupti! Dolor quas
-                        dicta laboriosam nam dolore earum ipsam!
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maxime reprehenderit dolorum
-                        fuga amet, ea ad dolore, quasi hic dolor perferendis iste! Culpa corporis saepe aspernatur
-                        soluta rem amet omnis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptate
-                        sint et quod, odio maiores nisi repellendus cumque rerum, corporis, animi eius laboriosam
-                        eligendi dolore itaque laborum numquam distinctio iure! Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Voluptatem doloribus beatae fugiat in harum unde porro itaque! Neque vitae
-                        sunt quod nemo enim voluptas, magni ducimus impedit repellendus aliquam aperiam!
-                    </div>
-                    <div id="rightImgArticle"></div>
+                <? foreach ($massArticle as $elemArticle) { ?>
+                    <? if ($elemArticle['id'] == $id) { ?>
+                        <h2><?= $elemArticle['card_name']?></h2>
+                        <div id="textContentArticle"><?= $elemArticle['main_text']?>
 
+                        </div>
+                        <h4><?= $elemArticle['subtitle']?></h4>
+                        <div id="twoTextBlockArticle">
+                            <div id="leftTextArticle">
+                            <?= $elemArticle['subMain_text']?>
+                            </div>
+                            <div id="rightImgArticle"></div>
+                        <? } ?>
+                    <? } ?>
                 </div>
                 <a id="yakor"></a><!--Якорь-->
                 <div id="commentsContainer">
@@ -226,7 +202,8 @@ if (!empty($_POST) && isset($_POST)) {
                                 <label for=""><input type="text" id="nick" name="nickComment"
                                         placeholder="Ваше имя"></label>
                                 <div id="containerComment">
-                                    <textarea id="comment" style="resize: none;margin-top:5px" name="textComment"></textarea>
+                                    <textarea id="comment" style="resize: none;margin-top:5px"
+                                        name="textComment"></textarea>
                                     <a href="#yakor"><!--Якорь-->
                                         <button id="sendMessage">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"

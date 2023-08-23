@@ -321,7 +321,7 @@ body {
 #button:hover {
     background-color: rgba(48, 0, 88, 0.713);
     box-shadow: 0px 0px 15px 6px rgba(139, 0, 255, 0.32);
-}
+}nameCardnameCard
 .cardNewsBlock button {
     border-radius: 5px;
     display: flex;
@@ -447,11 +447,12 @@ footer {
     }
 
     .nameCard {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
 
     .surNameCard {
-        font-size: 0.8rem;
+        font-weight: 500;
+        font-size: 0.65rem;
     }
 
     #rightblock {
